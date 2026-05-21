@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Identité Cheminées Philippe — registre artisan / matière
+   (brique-braise + ardoise + pierre + bois) */
+
+@theme {
+  --color-brand-50: #faf0ec;
+  --color-brand-100: #f4ddd4;
+  --color-brand-200: #e8bcac;
+  --color-brand-300: #d9967f;
+  --color-brand-400: #c66d51;
+  --color-brand-500: #a8442b;
+  --color-brand-600: #913a25;
+  --color-brand-700: #76301f;
+  --color-brand-800: #5c271a;
+  --color-brand-900: #421d14;
+  --color-brand-950: #24100b;
+
+  --color-ink-50: #f7f6f4;
+  --color-ink-100: #ecebe7;
+  --color-ink-200: #d9d7d0;
+  --color-ink-300: #b6b2a8;
+  --color-ink-400: #847f74;
+  --color-ink-500: #545049;
+  --color-ink-600: #3c3935;
+  --color-ink-700: #2a2823;
+  --color-ink-800: #232227;
+  --color-ink-900: #161519;
+  --color-ink-950: #000000;
+
+  /* Ardoise bleutée — clin d'œil à la pierre bleue de Hainaut des produits Philippe */
+  --color-slate-soft: #4c545c;
+
+  /* Crème pierre — fonds de section */
+  --color-warm-50: #f4efe7;
+  --color-warm-100: #e9e0d2;
+
+  /* Bois / terre — touche chaude */
+  --color-bronze: #8a6a47;
+
+  --font-sans: "Mulish", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink-800);
+    background-color: #fbf8f2;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  img,
+  picture,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  /* Padding bottom mobile pour ne pas masquer le contenu sous la sticky CTA bar */
+  @media (max-width: 1023px) {
+    main {
+      padding-bottom: 0;
+    }
+    footer {
+      padding-bottom: 5rem;
+    }
+  }
+}
+
+/* Reveal-on-scroll : animation subtile pour les sections */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation badge "Concessionnaire depuis 1986" — glow subtil */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(168, 68, 43, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(168, 68, 43, 0.15);
+  }
+}

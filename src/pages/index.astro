@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import BandeauConfiance from "../components/BandeauConfiance.astro";
+import ServicesEnTroisEtapes from "../components/ServicesEnTroisEtapes.astro";
+import CategoriesProduits from "../components/CategoriesProduits.astro";
+import AidesEstimator from "../components/AidesEstimator.astro";
+import GalerieTeaser from "../components/GalerieTeaser.astro";
+import ContactHome from "../components/ContactHome.astro";
+---
+
+<BaseLayout
+  title="Cheminées Philippe Évreux — Sur mesure, inserts, poêles"
+  description="Concessionnaire Cheminées Philippe depuis 1986. Cheminées sur mesure, inserts et poêles fabriqués en France, installation clé en main dans l'Eure."
+>
+  <Hero />
+  <BandeauConfiance />
+  <ServicesEnTroisEtapes />
+  <CategoriesProduits />
+  <div id="estimateur-aides">
+    <AidesEstimator />
+  </div>
+  <GalerieTeaser />
+  <ContactHome />
+</BaseLayout>

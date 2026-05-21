@@ -1,0 +1,74 @@
+---
+import { url } from "../lib/url";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink-900 text-ink-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <div class="flex flex-col leading-none mb-4">
+          <span class="font-display text-2xl font-semibold text-white">Cheminées Philippe</span>
+          <span class="mt-1 text-xs text-brand-400 uppercase tracking-[0.18em]">
+            Évreux · concessionnaire depuis 1986
+          </span>
+        </div>
+        <p class="text-sm text-ink-300 leading-relaxed max-w-md">
+          Concessionnaire Cheminées Philippe depuis 1986. Cheminées sur mesure, inserts,
+          foyers et poêles à bois et à granulés — vente et installation par nos équipes
+          dans l'Eure et en Normandie.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="px-3 py-1 text-xs bg-ink-800 rounded-full">RGE Qualibois</span>
+          <span class="px-3 py-1 text-xs bg-ink-800 rounded-full">Flamme Verte</span>
+          <span class="px-3 py-1 text-xs bg-brand-500/20 text-brand-300 rounded-full">Fabrication française</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">
+          Nos produits
+        </h3>
+        <ul class="mt-4 space-y-2">
+          <li><a href={url("/cheminees-sur-mesure")} class="text-sm text-ink-300 hover:text-brand-400">Cheminées sur mesure</a></li>
+          <li><a href={url("/inserts-foyers")} class="text-sm text-ink-300 hover:text-brand-400">Inserts & foyers</a></li>
+          <li><a href={url("/poeles")} class="text-sm text-ink-300 hover:text-brand-400">Poêles à bois & granulés</a></li>
+          <li><a href={url("/galerie")} class="text-sm text-ink-300 hover:text-brand-400">Galerie</a></li>
+          <li><a href={url("/about")} class="text-sm text-ink-300 hover:text-brand-400">À propos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-semibold text-white uppercase tracking-wide">
+          Showroom & contact
+        </h3>
+        <address class="mt-4 not-italic text-sm text-ink-300 leading-relaxed">
+          Centre commercial Caer<br />
+          Route de Rouen<br />
+          27930 Normanville<br />
+          <a href="tel:+33232333193" class="hover:text-brand-400 transition">
+            02 32 33 31 93
+          </a><br />
+          <a href="mailto:cheminexpo@wanadoo.fr" class="hover:text-brand-400 transition">
+            cheminexpo@wanadoo.fr
+          </a>
+        </address>
+        <p class="mt-4 text-xs text-ink-400 leading-relaxed">
+          Mar–Ven 9h-12h / 14h-18h<br />
+          Samedi 10h-12h / 14h-18h
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-ink-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <p class="text-sm text-ink-400">
+        © {year} Loisirs Habitat Diffusion SAS · Tous droits réservés
+      </p>
+      <ul class="flex gap-6 text-sm">
+        <li><a href={url("/mentions-legales")} class="text-ink-400 hover:text-brand-400">Mentions légales</a></li>
+        <li><a href={url("/politique-de-confidentialite")} class="text-ink-400 hover:text-brand-400">Confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

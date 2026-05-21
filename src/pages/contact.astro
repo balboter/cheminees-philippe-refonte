@@ -1,0 +1,436 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../lib/url";
+
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+
+const etapes = [
+  {
+    n: "1",
+    titre: "Vous nous écrivez",
+    desc: "Remplissez le formulaire ou appelez-nous. Aucune obligation à ce stade.",
+  },
+  {
+    n: "2",
+    titre: "On vous rappelle",
+    desc: "Un conseiller revient vers vous pour préciser votre projet et caler une visite.",
+  },
+  {
+    n: "3",
+    titre: "Visite et devis",
+    desc: "Nous étudions votre pièce sur place, puis nous vous remettons un devis chiffré.",
+  },
+];
+---
+
+<BaseLayout
+  title="Contact & devis gratuit — Cheminées Philippe Évreux"
+  description="Demandez votre devis gratuit pour une cheminée, un insert ou un poêle. Showroom Cheminées Philippe à Normanville près d'Évreux, téléphone 02 32 33 31 93."
+>
+  <section class="bg-warm-100 py-14 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Contact
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-ink-900">
+        Demandez votre devis
+      </h1>
+      <p class="mt-5 text-lg sm:text-xl text-ink-700 max-w-3xl leading-relaxed">
+        Un projet de cheminée, d'insert ou de poêle ? Décrivez-le en quelques
+        lignes ci-dessous. Un conseiller vous rappelle pour en parler et organiser
+        une visite technique gratuite.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-warm-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+        <div class="lg:col-span-2">
+          <p class="text-base text-ink-600 mb-5">
+            Les champs marqués d'un astérisque (<span class="text-brand-600">*</span>)
+            sont obligatoires.
+          </p>
+
+          <form
+            id="devis-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="p-6 sm:p-8 bg-white rounded-2xl border border-warm-100 space-y-6"
+          >
+            <input type="hidden" name="access_key" value={accessKey} />
+            <input type="hidden" name="subject" value="Demande de devis — Cheminées Philippe" />
+            <input type="hidden" name="from_name" value="Site Cheminées Philippe" />
+            <input
+              type="checkbox"
+              name="botcheck"
+              class="hidden"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="nom" class="block text-base font-semibold text-ink-900">
+                  Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  required
+                  aria-required="true"
+                  autocomplete="name"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+                />
+              </div>
+
+              <div>
+                <label for="telephone" class="block text-base font-semibold text-ink-900">
+                  Téléphone <span class="text-brand-600" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="telephone"
+                  name="telephone"
+                  required
+                  aria-required="true"
+                  autocomplete="tel"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-base font-semibold text-ink-900">
+                Email <span class="text-brand-600" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-required="true"
+                autocomplete="email"
+                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+              />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="type-appareil" class="block text-base font-semibold text-ink-900">
+                  Type d'appareil <span class="text-brand-600" aria-hidden="true">*</span>
+                </label>
+                <select
+                  id="type-appareil"
+                  name="type_appareil"
+                  required
+                  aria-required="true"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+                >
+                  <option value="">— Sélectionnez —</option>
+                  <option value="Cheminée sur mesure">Cheminée sur mesure</option>
+                  <option value="Insert">Insert</option>
+                  <option value="Poêle à bois">Poêle à bois</option>
+                  <option value="Poêle à granulés">Poêle à granulés</option>
+                  <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="surface" class="block text-base font-semibold text-ink-900">
+                  Surface à chauffer
+                </label>
+                <select
+                  id="surface"
+                  name="surface"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+                >
+                  <option value="">— Sélectionnez —</option>
+                  <option value="Moins de 50 m²">Moins de 50 m²</option>
+                  <option value="50 à 100 m²">50 à 100 m²</option>
+                  <option value="100 à 150 m²">100 à 150 m²</option>
+                  <option value="Plus de 150 m²">Plus de 150 m²</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="delai" class="block text-base font-semibold text-ink-900">
+                Délai souhaité
+              </label>
+              <select
+                id="delai"
+                name="delai"
+                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+              >
+                <option value="">— Sélectionnez —</option>
+                <option value="Dès que possible">Dès que possible</option>
+                <option value="Dans les 3 mois">Dans les 3 mois</option>
+                <option value="Avant l'hiver prochain">Avant l'hiver prochain</option>
+                <option value="Je me renseigne">Je me renseigne</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-base font-semibold text-ink-900">
+                Votre message <span class="text-ink-500 font-normal">(facultatif)</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Type de logement, style recherché, conduit existant ou non, modèle envisagé… Tout détail nous aide à préparer un devis précis."
+                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 focus:border-brand-500 focus-visible:ring-2 focus-visible:ring-brand-500/30 outline-none bg-white transition"
+              ></textarea>
+            </div>
+
+            <p class="text-sm text-ink-600 leading-relaxed">
+              Les informations transmises servent uniquement à vous recontacter au
+              sujet de votre projet. Pour en savoir plus, consultez notre{" "}
+              <a href={url("/politique-de-confidentialite")} class="underline text-brand-600 hover:text-brand-700">
+                politique de confidentialité
+              </a>.
+            </p>
+
+            <button
+              type="submit"
+              id="submit-btn"
+              class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-500 text-white text-lg font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+            >
+              <span id="submit-label">Envoyer ma demande</span>
+              <svg id="submit-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15" />
+              </svg>
+              <svg id="submit-spinner" class="hidden animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+
+            <p class="text-center text-sm text-ink-600">
+              Devis et visite technique gratuits, sans engagement.
+            </p>
+          </form>
+
+          <div id="form-success" class="hidden mt-6 p-6 bg-warm-100 border-2 border-brand-300 rounded-2xl">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-500 text-white flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-lg font-bold text-ink-900">Demande envoyée, merci !</h2>
+                <p class="mt-1 text-ink-700 leading-relaxed">
+                  Nous avons bien reçu votre demande. Un conseiller vous rappelle
+                  dans les meilleurs délais.
+                </p>
+                <p class="mt-3 text-sm text-ink-600">
+                  Pour nous joindre tout de suite, appelez le{" "}
+                  <a href="tel:+33232333193" class="font-semibold text-brand-600 hover:text-brand-700">02 32 33 31 93</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="form-error" class="hidden mt-6 p-6 bg-warm-100 border-2 border-brand-400 rounded-2xl">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-600 text-white flex items-center justify-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-lg font-bold text-ink-900">L'envoi a échoué</h2>
+                <p class="mt-1 text-ink-700 leading-relaxed">
+                  Un problème technique nous empêche de recevoir votre demande.
+                  Merci de nous appeler au{" "}
+                  <a href="tel:+33232333193" class="font-semibold text-brand-600 hover:text-brand-700">02 32 33 31 93</a>{" "}
+                  ou de nous écrire à{" "}
+                  <a href="mailto:cheminexpo@wanadoo.fr" class="font-semibold text-brand-600 hover:text-brand-700">cheminexpo@wanadoo.fr</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="space-y-5">
+          <div class="p-6 bg-brand-500 text-white rounded-2xl">
+            <p class="text-sm font-semibold uppercase tracking-wider text-warm-100">
+              Vous préférez appeler ?
+            </p>
+            <a
+              href="tel:+33232333193"
+              class="block mt-3 text-3xl sm:text-4xl font-bold hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              02 32 33 31 93
+            </a>
+            <p class="mt-3 text-warm-100">
+              Du mardi au vendredi 9h-12h / 14h-18h,
+              le samedi 10h-12h / 14h-18h.
+            </p>
+          </div>
+
+          <div class="p-6 bg-white border border-warm-100 rounded-2xl">
+            <h3 class="text-lg font-bold text-ink-900">Notre showroom</h3>
+            <address class="mt-3 not-italic text-ink-700 leading-relaxed">
+              Centre commercial Caer, Route de Rouen<br />
+              27930 Normanville<br />
+              <span class="text-ink-500">À quelques minutes d'Évreux</span>
+            </address>
+            <p class="mt-4 text-ink-700">
+              <strong class="text-ink-900">Horaires</strong><br />
+              Mardi à vendredi : 9h-12h / 14h-18h<br />
+              Samedi : 10h-12h / 14h-18h<br />
+              Fermé dimanche et lundi
+            </p>
+          </div>
+
+          <div class="p-6 bg-white border border-warm-100 rounded-2xl">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-brand-600">
+              Par email
+            </h3>
+            <a
+              href="mailto:cheminexpo@wanadoo.fr"
+              class="block mt-2 text-lg font-bold text-ink-900 hover:text-brand-600 transition break-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+            >
+              cheminexpo@wanadoo.fr
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+        Comment nous trouver
+      </h2>
+      <div class="mt-6 rounded-2xl border border-warm-100 bg-warm-50 shadow-md p-6 sm:p-8">
+        <p class="text-base text-ink-700 leading-relaxed max-w-2xl">
+          Le showroom Cheminées Philippe se situe au Centre commercial Caer,
+          Route de Rouen à Normanville, à une dizaine de minutes d'Évreux.
+          Parking gratuit devant le magasin.
+        </p>
+        <address class="mt-4 not-italic text-base text-ink-700 leading-relaxed">
+          Centre commercial Caer, Route de Rouen<br />
+          27930 Normanville
+        </address>
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=Centre%20commercial%20Caer%2C%2027930%20Normanville"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group mt-6 inline-flex items-center gap-3 px-5 py-4 rounded-xl bg-white border border-warm-100 hover:border-brand-300 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+        >
+          <span class="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-500 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </span>
+          <span class="font-semibold text-ink-900">Itinéraire vers le showroom</span>
+          <svg class="w-5 h-5 text-brand-600 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-16 bg-warm-50">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Et ensuite ?
+      </p>
+      <h2 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-ink-900">
+        Ce qui se passe après votre demande
+      </h2>
+
+      <ol class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {etapes.map((e) => (
+          <li class="p-6 rounded-xl bg-white border border-warm-100">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-500 text-white font-bold">
+              {e.n}
+            </span>
+            <h3 class="mt-4 text-lg font-bold text-ink-900">{e.titre}</h3>
+            <p class="mt-2 text-base text-ink-700 leading-relaxed">{e.desc}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  const form = document.getElementById("devis-form");
+  const successEl = document.getElementById("form-success");
+  const errorEl = document.getElementById("form-error");
+  const submitBtn = document.getElementById("submit-btn");
+  const submitLabel = document.getElementById("submit-label");
+  const submitArrow = document.getElementById("submit-arrow");
+  const submitSpinner = document.getElementById("submit-spinner");
+
+  function restoreSubmit() {
+    if (!submitBtn) return;
+    submitBtn.disabled = false;
+    submitLabel.textContent = "Envoyer ma demande";
+    submitSpinner.classList.add("hidden");
+    submitArrow.classList.remove("hidden");
+  }
+
+  async function submitForm(e) {
+    e.preventDefault();
+
+    if (form && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    successEl.classList.add("hidden");
+    errorEl.classList.add("hidden");
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitLabel.textContent = "Envoi en cours...";
+      submitArrow.classList.add("hidden");
+      submitSpinner.classList.remove("hidden");
+    }
+
+    const formData = new FormData(form);
+    const accessKey = formData.get("access_key");
+
+    if (!accessKey || accessKey === "") {
+      restoreSubmit();
+      errorEl.classList.remove("hidden");
+      errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = "none";
+        successEl.classList.remove("hidden");
+        successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        throw new Error(json.message || "Erreur inconnue");
+      }
+    } catch (err) {
+      restoreSubmit();
+      errorEl.classList.remove("hidden");
+      errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  form?.addEventListener("submit", submitForm);
+</script>

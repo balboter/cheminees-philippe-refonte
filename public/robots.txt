@@ -1,0 +1,13 @@
+# PHASE PREVIEW (GitHub Pages) — site non destiné à l'indexation.
+# Le preview ne doit pas être indexé pour ne pas créer de contenu dupliqué
+# avec le futur site sur cheminees-poeles-philippe.com.
+#
+# À LA BASCULE SUR LE DOMAINE FINAL, remplacer ce fichier par :
+#   User-agent: *
+#   Allow: /
+#   Disallow: /mentions-legales
+#   Disallow: /politique-de-confidentialite
+#   Sitemap: https://cheminees-poeles-philippe.com/sitemap-index.xml
+
+User-agent: *
+Disallow: /

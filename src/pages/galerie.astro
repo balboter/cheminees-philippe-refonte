@@ -1,0 +1,365 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
+import { url } from "../lib/url";
+
+type Categorie = "cheminee" | "insert" | "poele";
+
+interface Realisation {
+  src: string;
+  cat: Categorie;
+  titre: string;
+  lieu: string;
+  lien: string;
+}
+
+const realisationsRaw: Realisation[] = [
+  { src: "/images/installations/126.webp", cat: "cheminee", titre: "Cheminée habillage pierre", lieu: "Pont-Audemer", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/167.webp", cat: "cheminee", titre: "Cheminée en pierre de taille", lieu: "Bernay", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/123.webp", cat: "cheminee", titre: "Cheminée maçonnée sur mesure", lieu: "Évreux", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/145.webp", cat: "cheminee", titre: "Cheminée ferronnerie d'art", lieu: "Les Andelys", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/166.webp", cat: "cheminee", titre: "Cheminée habillage marbre", lieu: "Vernon", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/178.webp", cat: "cheminee", titre: "Cheminée d'angle sur mesure", lieu: "Louviers", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/196.webp", cat: "cheminee", titre: "Foyer ouvert habillage pierre", lieu: "Gisors", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/201.webp", cat: "cheminee", titre: "Cheminée contemporaine sur mesure", lieu: "Le Neubourg", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/gallery14-56.webp", cat: "cheminee", titre: "Cheminée traditionnelle", lieu: "Conches-en-Ouche", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/gallery14-57.webp", cat: "cheminee", titre: "Cheminée pierre et bois", lieu: "Verneuil-sur-Avre", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/gallery14-59.webp", cat: "cheminee", titre: "Cheminée de salon sur mesure", lieu: "Gaillon", lien: "/cheminees-sur-mesure" },
+  { src: "/images/installations/gallery14-60.webp", cat: "cheminee", titre: "Cheminée habillage minéral", lieu: "Brionne", lien: "/cheminees-sur-mesure" },
+
+  { src: "/images/installations/128.webp", cat: "insert", titre: "Insert posé dans une cheminée existante", lieu: "Bernay", lien: "/inserts-foyers" },
+  { src: "/images/installations/137.webp", cat: "insert", titre: "Foyer fermé grande vitre", lieu: "Évreux", lien: "/inserts-foyers" },
+  { src: "/images/installations/148.webp", cat: "insert", titre: "Insert habillage sur mesure", lieu: "Pacy-sur-Eure", lien: "/inserts-foyers" },
+  { src: "/images/installations/177.webp", cat: "insert", titre: "Insert de salon contemporain", lieu: "Le Neubourg", lien: "/inserts-foyers" },
+  { src: "/images/installations/183.webp", cat: "insert", titre: "Insert design pour pièce ouverte", lieu: "Louviers", lien: "/inserts-foyers" },
+  { src: "/images/installations/gallery14-61.webp", cat: "insert", titre: "Rénovation de cheminée par insert", lieu: "Étrépagny", lien: "/inserts-foyers" },
+  { src: "/images/installations/gallery14-62.webp", cat: "insert", titre: "Foyer fermé en rénovation", lieu: "Beuzeville", lien: "/inserts-foyers" },
+  { src: "/images/installations/gallery14-63.webp", cat: "insert", titre: "Insert large vision", lieu: "Damville", lien: "/inserts-foyers" },
+  { src: "/images/installations/gallery14-116.webp", cat: "insert", titre: "Insert posé en cheminée ancienne", lieu: "Breteuil", lien: "/inserts-foyers" },
+
+  { src: "/images/installations/124.webp", cat: "poele", titre: "Poêle à bois de salon", lieu: "Évreux", lien: "/poeles" },
+  { src: "/images/installations/125.webp", cat: "poele", titre: "Poêle à granulés", lieu: "Verneuil-sur-Avre", lien: "/poeles" },
+  { src: "/images/installations/129.webp", cat: "poele", titre: "Poêle à bois compact", lieu: "Conches-en-Ouche", lien: "/poeles" },
+  { src: "/images/installations/130.webp", cat: "poele", titre: "Poêle à granulés contemporain", lieu: "Vernon", lien: "/poeles" },
+  { src: "/images/installations/131.webp", cat: "poele", titre: "Poêle à bois traditionnel", lieu: "Pont-Audemer", lien: "/poeles" },
+  { src: "/images/installations/147.webp", cat: "poele", titre: "Poêle à bois au design épuré", lieu: "Louviers", lien: "/poeles" },
+  { src: "/images/installations/149.webp", cat: "poele", titre: "Poêle à bois en pavillon", lieu: "Le Neubourg", lien: "/poeles" },
+  { src: "/images/installations/150.webp", cat: "poele", titre: "Poêle à granulés de séjour", lieu: "Gisors", lien: "/poeles" },
+  { src: "/images/installations/155.webp", cat: "poele", titre: "Poêle à bois en maison normande", lieu: "Bernay", lien: "/poeles" },
+  { src: "/images/installations/164.webp", cat: "poele", titre: "Poêle à granulés en pavillon récent", lieu: "Gaillon", lien: "/poeles" },
+  { src: "/images/installations/165.webp", cat: "poele", titre: "Poêle à granulés grand volume", lieu: "Saint-André-de-l'Eure", lien: "/poeles" },
+  { src: "/images/installations/168.webp", cat: "poele", titre: "Poêle à bois en pièce ouverte", lieu: "Pacy-sur-Eure", lien: "/poeles" },
+  { src: "/images/installations/169.webp", cat: "poele", titre: "Poêle à bois en rénovation", lieu: "Brionne", lien: "/poeles" },
+  { src: "/images/installations/200.webp", cat: "poele", titre: "Poêle à bois en véranda", lieu: "Rugles", lien: "/poeles" },
+  { src: "/images/installations/gallery78-107.webp", cat: "poele", titre: "Poêle à bois de salon", lieu: "Beuzeville", lien: "/poeles" },
+  { src: "/images/installations/gallery78-108.webp", cat: "poele", titre: "Poêle à granulés", lieu: "Étrépagny", lien: "/poeles" },
+];
+
+const realisations: Realisation[] = realisationsRaw.map((r) => ({
+  ...r,
+  src: url(r.src),
+  lien: url(r.lien),
+}));
+
+const total = realisations.length;
+const compte = {
+  cheminee: realisations.filter((r) => r.cat === "cheminee").length,
+  insert: realisations.filter((r) => r.cat === "insert").length,
+  poele: realisations.filter((r) => r.cat === "poele").length,
+};
+---
+
+<BaseLayout
+  title="Galerie des réalisations — Cheminées Philippe Évreux"
+  description="Cheminées sur mesure, inserts et poêles installés par nos équipes dans l'Eure et en Normandie. Parcourez nos réalisations, filtrez par type d'appareil."
+>
+  <section class="bg-warm-100 py-14 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-600 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Nos réalisations
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-ink-900">
+        Des installations qui durent
+      </h1>
+      <p class="mt-5 text-lg sm:text-xl text-ink-700 max-w-3xl leading-relaxed">
+        Voici des cheminées, inserts et poêles que nos équipes ont posés chez des
+        particuliers de l'Eure et des départements voisins. Chaque photo est une
+        installation réelle. Cliquez sur une image pour l'agrandir.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-10 sm:py-14 bg-warm-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div
+        class="flex flex-wrap gap-3 mb-8"
+        role="group"
+        aria-label="Filtrer les réalisations par type d'appareil"
+      >
+        <button
+          type="button"
+          data-filter="all"
+          class="filter-btn px-5 py-2.5 rounded-full bg-brand-500 text-white text-base font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+          aria-pressed="true"
+        >
+          Tout voir ({total})
+        </button>
+        <button
+          type="button"
+          data-filter="cheminee"
+          class="filter-btn px-5 py-2.5 rounded-full bg-white text-ink-800 text-base font-semibold border border-warm-200 hover:border-brand-300 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+          aria-pressed="false"
+        >
+          Cheminées ({compte.cheminee})
+        </button>
+        <button
+          type="button"
+          data-filter="insert"
+          class="filter-btn px-5 py-2.5 rounded-full bg-white text-ink-800 text-base font-semibold border border-warm-200 hover:border-brand-300 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+          aria-pressed="false"
+        >
+          Inserts & foyers ({compte.insert})
+        </button>
+        <button
+          type="button"
+          data-filter="poele"
+          class="filter-btn px-5 py-2.5 rounded-full bg-white text-ink-800 text-base font-semibold border border-warm-200 hover:border-brand-300 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+          aria-pressed="false"
+        >
+          Poêles ({compte.poele})
+        </button>
+      </div>
+
+      <div
+        id="gallery-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+      >
+        {
+          realisations.map((r, i) => (
+            <button
+              type="button"
+              class="gallery-item group block text-left overflow-hidden rounded-xl bg-white border border-warm-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"
+              data-cat={r.cat}
+              data-index={i}
+              data-src={r.src}
+              data-titre={r.titre}
+              data-lieu={r.lieu}
+              data-lien={r.lien}
+              aria-label={`Agrandir la photo : ${r.titre} à ${r.lieu}`}
+            >
+              <div class="relative aspect-[4/3] overflow-hidden bg-warm-100">
+                <img
+                  src={r.src}
+                  alt={`${r.titre} installée à ${r.lieu} par Cheminées Philippe`}
+                  width="600"
+                  height="450"
+                  loading={i < 6 ? "eager" : "lazy"}
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition" />
+                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur text-sm font-semibold text-ink-900 shadow-md">
+                    Agrandir la photo
+                  </span>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="font-semibold text-ink-900">{r.titre}</p>
+                <p class="mt-1 text-sm text-ink-600 inline-flex items-center gap-1.5">
+                  <svg
+                    class="w-4 h-4 text-brand-500"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 2C7 2 5 5 5 8c0 3 1 5 5 10 4-5 5-7 5-10 0-3-2-6-5-6zm0 8a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
+                  {r.lieu}
+                </p>
+              </div>
+            </button>
+          ))
+        }
+      </div>
+
+      <p id="gallery-empty" class="hidden mt-10 text-center text-lg text-ink-600">
+        Aucune réalisation dans cette catégorie pour le moment.
+      </p>
+    </div>
+  </section>
+
+  <CTA
+    heading="Vous imaginez la vôtre ?"
+    description="Nous étudions votre pièce, votre conduit et vos envies, puis nous vous proposons un projet chiffré, sans engagement. Le devis et la visite technique sont gratuits."
+  />
+
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink-900/95 p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Photo agrandie"
+  >
+    <button
+      type="button"
+      id="lightbox-close"
+      class="absolute top-4 right-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-ink-900 hover:bg-warm-100 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      aria-label="Fermer la photo agrandie"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      id="lightbox-prev"
+      class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/90 text-ink-900 hover:bg-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      aria-label="Photo précédente"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      id="lightbox-next"
+      class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/90 text-ink-900 hover:bg-white transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      aria-label="Photo suivante"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <figure class="max-w-4xl w-full">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        width="1200"
+        height="900"
+        class="w-full h-auto max-h-[75vh] object-contain rounded-lg"
+      />
+      <figcaption class="mt-4 text-center text-white">
+        <p id="lightbox-titre" class="text-lg font-semibold"></p>
+        <p id="lightbox-lieu" class="mt-1 text-warm-200"></p>
+        <a
+          id="lightbox-lien"
+          href={url("/contact")}
+          class="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          Voir cette gamme
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15" />
+          </svg>
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+</BaseLayout>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const emptyMsg = document.getElementById("gallery-empty");
+  let currentFilter = "all";
+
+  function applyFilter() {
+    let visible = 0;
+    items.forEach((item) => {
+      const matched = currentFilter === "all" || item.dataset.cat === currentFilter;
+      item.style.display = matched ? "" : "none";
+      if (matched) visible++;
+    });
+    emptyMsg?.classList.toggle("hidden", visible > 0);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentFilter = btn.dataset.filter ?? "all";
+      buttons.forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("bg-brand-500", "text-white");
+        b.classList.add("bg-white", "text-ink-800", "border", "border-warm-200");
+      });
+      btn.setAttribute("aria-pressed", "true");
+      btn.classList.remove("bg-white", "text-ink-800", "border", "border-warm-200");
+      btn.classList.add("bg-brand-500", "text-white");
+      applyFilter();
+    });
+  });
+
+  applyFilter();
+
+  // --- Lightbox ---
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lightbox-img") as HTMLImageElement | null;
+  const lbTitre = document.getElementById("lightbox-titre");
+  const lbLieu = document.getElementById("lightbox-lieu");
+  const lbLien = document.getElementById("lightbox-lien") as HTMLAnchorElement | null;
+  const lbClose = document.getElementById("lightbox-close");
+  const lbPrev = document.getElementById("lightbox-prev");
+  const lbNext = document.getElementById("lightbox-next");
+  let activeIndex = 0;
+  let lastFocused: HTMLElement | null = null;
+
+  function visibleItems(): HTMLElement[] {
+    return items.filter((item) => item.style.display !== "none");
+  }
+
+  function showAt(index: number) {
+    const list = visibleItems();
+    if (list.length === 0) return;
+    activeIndex = (index + list.length) % list.length;
+    const item = list[activeIndex];
+    if (!lbImg || !lbTitre || !lbLieu || !lbLien) return;
+    const titre = item.dataset.titre ?? "";
+    const lieu = item.dataset.lieu ?? "";
+    lbImg.src = item.dataset.src ?? "";
+    lbImg.alt = `${titre} installée à ${lieu} par Cheminées Philippe`;
+    lbTitre.textContent = titre;
+    lbLieu.textContent = lieu;
+    lbLien.href = item.dataset.lien ?? "/contact";
+  }
+
+  function openLightbox(item: HTMLElement) {
+    const list = visibleItems();
+    const idx = list.indexOf(item);
+    if (idx === -1) return;
+    lastFocused = document.activeElement as HTMLElement;
+    showAt(idx);
+    lightbox?.classList.remove("hidden");
+    lightbox?.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    lbClose?.focus();
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add("hidden");
+    lightbox?.classList.remove("flex");
+    document.body.style.overflow = "";
+    lastFocused?.focus();
+  }
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => openLightbox(item));
+  });
+
+  lbClose?.addEventListener("click", closeLightbox);
+  lbPrev?.addEventListener("click", () => showAt(activeIndex - 1));
+  lbNext?.addEventListener("click", () => showAt(activeIndex + 1));
+
+  lightbox?.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox?.classList.contains("hidden")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") showAt(activeIndex - 1);
+    if (e.key === "ArrowRight") showAt(activeIndex + 1);
+  });
+</script>

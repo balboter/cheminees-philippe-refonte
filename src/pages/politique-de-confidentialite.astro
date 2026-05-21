@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const today = new Date().toLocaleDateString("fr-FR", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout
+  title="Politique de confidentialité — Cheminées Philippe Évreux"
+  description="Comment Loisirs Habitat Diffusion (Cheminées Philippe Évreux) traite vos données personnelles, en conformité avec le RGPD."
+  noindex={true}
+>
+  <section class="py-14 lg:py-20 bg-warm-100">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold tracking-tight text-ink-900">
+        Politique de confidentialité
+      </h1>
+      <p class="mt-2 text-sm text-ink-600">Dernière mise à jour : {today}</p>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16 bg-warm-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 prose prose-lg">
+
+      <h2>1. Responsable du traitement</h2>
+      <p>
+        Le responsable du traitement des données est
+        <strong>Loisirs Habitat Diffusion SAS</strong>, concessionnaire Cheminées
+        Philippe, Centre commercial Caer, Route de Rouen, 27930 Normanville. Vous
+        pouvez nous joindre à
+        <a href="mailto:cheminexpo@wanadoo.fr">cheminexpo@wanadoo.fr</a> ou au
+        02 32 33 31 93.
+      </p>
+
+      <h2>2. Données collectées</h2>
+      <p>
+        Nous collectons uniquement les données que vous nous transmettez
+        volontairement via le formulaire de demande de devis :
+      </p>
+      <ul>
+        <li>Nom complet</li>
+        <li>Téléphone et adresse email</li>
+        <li>Type d'appareil souhaité, surface à chauffer, délai envisagé</li>
+        <li>Le message libre que vous rédigez, le cas échéant</li>
+      </ul>
+      <p>
+        Nous ne collectons aucune donnée à votre insu : aucun cookie publicitaire,
+        aucun traceur tiers n'est déposé sur votre appareil.
+      </p>
+
+      <h2>3. Finalité du traitement</h2>
+      <p>
+        Ces données servent exclusivement à vous recontacter au sujet de votre
+        projet de cheminée, d'insert ou de poêle : préparer une réponse, organiser
+        une visite technique et établir un devis. Elles ne sont utilisées à aucune
+        autre fin.
+      </p>
+
+      <h2>4. Base légale</h2>
+      <p>
+        Le traitement repose sur votre consentement, exprimé par l'envoi du
+        formulaire, et sur l'exécution de mesures précontractuelles prises à votre
+        demande (préparation d'un devis).
+      </p>
+
+      <h2>5. Sous-traitant : envoi du formulaire</h2>
+      <p>
+        Le formulaire de devis est traité techniquement par
+        <strong>Web3Forms</strong>, un service qui transmet le contenu du formulaire
+        vers notre adresse email. Web3Forms agit en qualité de sous-traitant et ne
+        conserve pas durablement le contenu des messages. Vos données ne sont
+        transmises à aucun autre tiers à des fins commerciales.
+      </p>
+
+      <h2>6. Mesure d'audience</h2>
+      <p>
+        La fréquentation du site est mesurée avec <strong>Plausible Analytics</strong>,
+        un outil respectueux de la vie privée. Plausible n'utilise aucun cookie, ne
+        collecte aucune donnée personnelle identifiante et ne suit pas les visiteurs
+        d'un site à l'autre. Conforme aux recommandations de la CNIL, cette mesure
+        d'audience est exemptée de bannière de consentement.
+      </p>
+
+      <h2>7. Durée de conservation</h2>
+      <ul>
+        <li>Demandes de devis sans suite : 3 ans après le dernier échange</li>
+        <li>Dossiers clients (devis signés, factures) : 10 ans, au titre de nos obligations comptables</li>
+      </ul>
+
+      <h2>8. Vos droits</h2>
+      <p>
+        Conformément au RGPD et à la loi Informatique et Libertés, vous disposez
+        d'un droit d'accès, de rectification, d'effacement, de limitation, de
+        portabilité et d'opposition concernant vos données. Pour exercer ces droits,
+        écrivez-nous à
+        <a href="mailto:cheminexpo@wanadoo.fr">cheminexpo@wanadoo.fr</a>. Nous vous
+        répondons dans un délai maximum d'un mois.
+      </p>
+      <p>
+        Vous pouvez également introduire une réclamation auprès de la CNIL :
+        <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">cnil.fr</a>.
+      </p>
+
+      <h2>9. Cookies</h2>
+      <p>
+        Ce site n'utilise aucun cookie de traçage ni de publicité. La mesure
+        d'audience est réalisée sans cookie via Plausible Analytics. Seuls des
+        cookies strictement nécessaires au bon fonctionnement du site peuvent être
+        utilisés ; ils ne requièrent pas votre consentement préalable.
+      </p>
+
+      <h2>10. Sécurité</h2>
+      <p>
+        Les données transmises via le formulaire sont chiffrées en transit (HTTPS).
+        Nous mettons en œuvre des mesures raisonnables pour protéger vos informations
+        contre tout accès non autorisé.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
