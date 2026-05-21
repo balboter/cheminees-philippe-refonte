@@ -1,12 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroEditorial from "../components/HeroEditorial.astro";
-import Manifeste from "../components/Manifeste.astro";
 import BlocAides from "../components/BlocAides.astro";
 import Realisations from "../components/Realisations.astro";
 import Faq from "../components/Faq.astro";
 import CTA from "../components/CTA.astro";
 import { url } from "../lib/url";
+
+const benefices = [
+  {
+    titre: "Une chaleur enfin captée",
+    texte:
+      "Un foyer ouvert laisse filer l'essentiel de la chaleur dans le conduit. Un foyer fermé ou un insert la garde dans la pièce : le confort change de nature.",
+  },
+  {
+    titre: "Des appareils éligibles aux aides",
+    texte:
+      "Remplacer un foyer ouvert par un appareil performant ouvre droit à MaPrimeRénov' et aux CEE, sous conditions. Nous montons le dossier avec vous.",
+  },
+  {
+    titre: "Une pose rapide, sans tout casser",
+    texte:
+      "L'insert se glisse dans la cheminée existante. On garde l'habillage que vous aimez, on remplace simplement le cœur. Une à deux journées de chantier.",
+  },
+];
 
 const gammes = [
   {
@@ -14,14 +31,14 @@ const gammes = [
     alt: "Foyer fermé Cheminées Philippe à grande vitre frontale dans une cheminée neuve",
     titre: "Le foyer fermé",
     texte:
-      "Le cœur d'une cheminée neuve. Une grande vitre, une chambre de combustion close, une chaleur enfin captée au lieu de filer dans le conduit. C'est le foyer fermé qui transforme une belle cheminée en vraie source de chauffe.",
+      "Le cœur d'une cheminée neuve. Grande vitre, chambre de combustion close, chaleur captée au lieu de filer dans le conduit. Le foyer fermé transforme une belle cheminée en vraie source de chauffe.",
   },
   {
     image: "/images/installations/148.webp",
     alt: "Insert Cheminées Philippe intégré dans une cheminée à foyer ouvert existante",
     titre: "L'insert de rénovation",
     texte:
-      "Vous avez déjà une cheminée à foyer ouvert ? L'insert se glisse dans l'âtre existant. On garde l'habillage que vous aimez, et on lui rend ce qu'il avait perdu : la chaleur, la propreté, le calme du feu derrière la vitre.",
+      "Vous avez déjà une cheminée à foyer ouvert ? L'insert se glisse dans l'âtre existant et lui rend ce qu'il avait perdu : la chaleur, la propreté, le calme du feu derrière la vitre.",
   },
 ];
 
@@ -36,11 +53,11 @@ const faqQuestions = [
   },
   {
     q: "Le conduit existant convient-il ?",
-    a: "C'est précisément ce que vérifie la visite technique : état du conduit, dimensions, tirage. Si un tubage est nécessaire, nos techniciens s'en chargent, aux normes, le jour de la pose.",
+    a: "C'est précisément ce que vérifie la visite-conseil : état du conduit, dimensions, tirage. Si un tubage est nécessaire, nos techniciens s'en chargent, aux normes, le jour de la pose.",
   },
   {
     q: "Combien de temps dure l'installation ?",
-    a: "Une pose d'insert ou de foyer fermé se déroule généralement sur une à deux journées, selon le chantier. Nous vous donnons une durée précise après la visite technique.",
+    a: "Une pose d'insert ou de foyer fermé se déroule généralement sur une à deux journées, selon le chantier. Nous vous donnons une durée précise après la visite-conseil.",
   },
 ];
 
@@ -67,47 +84,68 @@ const realisations = [
 ---
 
 <BaseLayout
-  title="Foyers & inserts Cheminées Philippe — Évreux & Normandie"
-  description="Foyers fermés et inserts Cheminées Philippe : rendre sa chaleur à une cheminée, rénover un foyer ouvert. Pose dans l'Eure, aides MaPrimeRénov' et CEE."
+  title="Foyers fermés & inserts — Cheminées Philippe, Eure"
+  description="Foyers fermés et inserts Cheminées Philippe : rendez sa chaleur à votre cheminée. Pose dans l'Eure, aides MaPrimeRénov' et CEE. Visite-conseil gratuite."
 >
   <HeroEditorial
-    kicker="Foyers & inserts"
-    title="Rendre à votre cheminée la chaleur qu'elle a perdue"
-    intro="Une cheminée à foyer ouvert offre le spectacle du feu, mais laisse filer sa chaleur. Un foyer fermé ou un insert garde le spectacle — et y ajoute la chaleur."
+    kicker="Foyers fermés & inserts"
+    title="Rendez à votre cheminée la chaleur qu'elle a perdue"
+    intro="Un foyer ouvert offre le spectacle du feu mais laisse filer sa chaleur. Un foyer fermé ou un insert garde le spectacle — et y ajoute le confort. Avec, en prime, les aides à la rénovation."
     image="/images/installations/137.webp"
     imageAlt="Foyer fermé à grande vitre installé dans une cheminée, le feu allumé"
-    ctaLabel="Échanger sur votre projet"
+    ctaLabel="Demander un devis gratuit"
     ctaHref="/contact"
+    reassurance="Appareils éligibles à MaPrimeRénov' et aux CEE — nous montons le dossier."
+    height="short"
   />
 
-  <Manifeste
-    kicker="Pourquoi fermer le foyer"
-    title="Le même feu, mais qui chauffe enfin"
-    paragraphs={[
-      "Un foyer ouvert est généreux à regarder et avare en chaleur : la flamme réchauffe l'œil, le conduit emporte le reste. Fermer le foyer, c'est garder l'image et récupérer la chaleur.",
-      "Le foyer fermé est la solution d'une cheminée neuve. L'insert, celle d'une cheminée que l'on possède déjà : il se glisse dans l'âtre, sans rien défaire de ce qui fait son charme.",
-      "Dans les deux cas, la pièce se réchauffe vraiment, le bois se consomme mieux, la vitre protège la maison des étincelles. Le confort change de nature.",
-    ]}
-  />
-
-  <section class="bg-white py-20 sm:py-28 lg:py-36">
+  <section class="bg-white py-20 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
+          Pourquoi fermer le foyer
+        </p>
+        <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl">
+          Le même feu, mais qui chauffe enfin
+        </h2>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {benefices.map((b) => (
+          <article class="rounded-xl border border-warm-100 bg-warm-50 p-7 sm:p-8">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-brand-500 text-white" aria-hidden="true">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-xl sm:text-2xl text-ink-900">
+              {b.titre}
+            </h3>
+            <p class="mt-3 text-ink-600 leading-relaxed">{b.texte}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-warm-50 py-20 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
           Les gammes
         </p>
-        <h2 class="mt-5 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl">
+        <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl">
           Deux réponses, selon votre cheminée
         </h2>
         <p class="mt-5 text-lg text-ink-600 leading-relaxed">
           Cheminée neuve ou cheminée à rénover : le bon appareil dépend de ce que
-          vous avez déjà. Notre conseiller vous oriente lors de la visite.
+          vous avez déjà. Notre conseiller vous oriente lors de la visite gratuite.
         </p>
       </div>
 
-      <div class="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
         {gammes.map((g) => (
-          <article class="group">
+          <article class="rounded-xl border border-warm-100 bg-white overflow-hidden">
             <div class="overflow-hidden">
               <img
                 src={url(g.image)}
@@ -115,41 +153,54 @@ const realisations = [
                 width="900"
                 height="675"
                 loading="lazy"
-                class="w-full aspect-[4/3] object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                class="w-full aspect-[4/3] object-cover"
               />
             </div>
-            <h3 class="mt-6 font-display text-2xl sm:text-3xl text-ink-900">
-              {g.titre}
-            </h3>
-            <p class="mt-3 text-lg text-ink-600 leading-relaxed">{g.texte}</p>
+            <div class="p-7 sm:p-8">
+              <h3 class="font-display text-2xl sm:text-3xl text-ink-900">
+                {g.titre}
+              </h3>
+              <p class="mt-3 text-lg text-ink-600 leading-relaxed">{g.texte}</p>
+            </div>
           </article>
         ))}
+      </div>
+
+      <div class="mt-10">
+        <a
+          href={url("/contact")}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300"
+        >
+          Demander un devis gratuit
+        </a>
       </div>
     </div>
   </section>
 
-  <BlocAides variant="cream" />
+  <BlocAides variant="white" />
 
   <Realisations
-    kicker="Réalisations"
+    kicker="Nos réalisations"
     title="Des cheminées remises au feu"
-    intro="Foyers fermés et inserts installés par nos équipes chez des particuliers de la région."
+    intro="Foyers fermés et inserts installés par nos équipes chez des particuliers de la région. La meilleure preuve de notre savoir-faire en rénovation."
     items={realisations}
     lienLabel="Voir toutes nos réalisations"
     lienHref="/realisations"
-    variant="white"
+    variant="cream"
   />
 
   <Faq
     kicker="Questions fréquentes"
     heading="Avant de vous lancer"
     questions={faqQuestions}
-    variant="cream"
+    variant="white"
   />
 
   <CTA
-    kicker="Parlons-en"
+    kicker="Votre projet"
     heading="Faisons le point sur votre cheminée"
-    description="La visite technique est gratuite : nous étudions votre conduit et votre foyer, puis nous vous proposons le foyer fermé ou l'insert adapté."
+    description="La visite-conseil est gratuite : nous étudions votre conduit et votre foyer, puis nous vous proposons le foyer fermé ou l'insert adapté, aides comprises."
+    ctaLabel="Demander un devis gratuit"
   />
 </BaseLayout>
+</content>

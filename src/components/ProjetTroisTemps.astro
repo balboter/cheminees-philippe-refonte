@@ -1,4 +1,6 @@
 ---
+import { url } from "../lib/url";
+
 interface Temps {
   titre: string;
   texte: string;
@@ -10,27 +12,31 @@ interface Props {
   intro?: string;
   temps: Temps[];
   variant?: "cream" | "white";
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 const {
-  kicker = "Le projet, de l'idée au feu",
+  kicker = "Votre projet en 3 étapes",
   title,
   intro,
   temps,
   variant = "white",
+  ctaLabel,
+  ctaHref = "/contact",
 } = Astro.props;
 
-const bg = variant === "cream" ? "bg-[#f4efe7]" : "bg-white";
+const bg = variant === "cream" ? "bg-warm-50" : "bg-white";
 ---
 
-<section class={`${bg} py-20 sm:py-28 lg:py-36`}>
+<section class={`${bg} py-20 sm:py-24 lg:py-28`}>
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl">
-      <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
         {kicker}
       </p>
       <h2
-        class="mt-5 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl"
+        class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl"
       >
         {title}
       </h2>
@@ -39,14 +45,14 @@ const bg = variant === "cream" ? "bg-[#f4efe7]" : "bg-white";
       )}
     </div>
 
-    <ol class="mt-14 sm:mt-16 space-y-12 sm:space-y-16">
+    <ol class="mt-12 sm:mt-14 space-y-10 sm:space-y-12">
       {temps.map((t, i) => (
         <li class="grid grid-cols-1 sm:grid-cols-[5rem_1fr] gap-4 sm:gap-10 items-start">
           <span
-            class="font-display text-5xl sm:text-6xl text-brand-500 leading-none"
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-brand-500 font-display text-3xl text-white leading-none"
             aria-hidden="true"
           >
-            {String(i + 1).padStart(2, "0")}
+            {i + 1}
           </span>
           <div class="border-t border-warm-100 sm:border-0 pt-4 sm:pt-2">
             <h3 class="font-display text-2xl sm:text-3xl text-ink-900">
@@ -57,5 +63,20 @@ const bg = variant === "cream" ? "bg-[#f4efe7]" : "bg-white";
         </li>
       ))}
     </ol>
+
+    {ctaLabel && (
+      <div class="mt-12 sm:mt-14 sm:pl-[5rem] sm:ml-10">
+        <a
+          href={url(ctaHref)}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300"
+        >
+          {ctaLabel}
+        </a>
+        <p class="mt-3 text-sm text-ink-500">
+          La première étape est gratuite et sans engagement.
+        </p>
+      </div>
+    )}
   </div>
 </section>
+</content>

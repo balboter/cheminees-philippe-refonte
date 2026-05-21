@@ -43,16 +43,18 @@ const compte = {
 ---
 
 <BaseLayout
-  title="Nos réalisations — cheminées sur mesure posées dans l'Eure"
+  title="Nos réalisations Cheminées Philippe — Eure & Normandie"
   description="Cheminées sur mesure, foyers fermés et inserts installés par nos équipes dans l'Eure et en Normandie. Parcourez nos réalisations réelles."
 >
   <HeroEditorial
-    kicker="Réalisations"
-    title="Chacune a trouvé sa pièce"
-    intro="Toutes les installations présentées ici sont réelles, chez des particuliers de l'Eure et de Normandie. Aucune ne ressemble exactement à une autre."
+    kicker="Nos réalisations"
+    title="Des chantiers réels, posés près de chez vous"
+    intro="Toutes les installations présentées ici sont réelles, chez des particuliers de l'Eure et de Normandie. La meilleure preuve de ce que nous savons faire."
     image="/images/installations/167.webp"
     imageAlt="Cheminée sur mesure en pierre installée dans un séjour"
-    showPhone={false}
+    ctaLabel="Demander un devis gratuit"
+    ctaHref="/contact"
+    showPhone={true}
     height="short"
   />
 
@@ -66,7 +68,7 @@ const compte = {
         <button
           type="button"
           data-filter="all"
-          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-brand-500 text-white text-sm font-medium tracking-wide transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-brand-600 text-white text-sm font-medium tracking-wide transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
           aria-pressed="true"
         >
           Tout voir ({total})
@@ -149,12 +151,12 @@ const compte = {
       currentFilter = btn.dataset.filter ?? "all";
       buttons.forEach((b) => {
         b.setAttribute("aria-pressed", "false");
-        b.classList.remove("bg-brand-500", "text-white");
+        b.classList.remove("bg-brand-600", "text-white");
         b.classList.add("bg-white", "text-ink-700", "border", "border-warm-200");
       });
       btn.setAttribute("aria-pressed", "true");
       btn.classList.remove("bg-white", "text-ink-700", "border", "border-warm-200");
-      btn.classList.add("bg-brand-500", "text-white");
+      btn.classList.add("bg-brand-600", "text-white");
       applyFilter();
     });
   });

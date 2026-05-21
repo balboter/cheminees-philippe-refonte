@@ -1,8 +1,26 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroEditorial from "../components/HeroEditorial.astro";
-import Manifeste from "../components/Manifeste.astro";
 import CTA from "../components/CTA.astro";
+import { url } from "../lib/url";
+
+const benefices = [
+  {
+    titre: "Une pose rapide, sans gros travaux",
+    texte:
+      "Le poêle s'installe en une journée le plus souvent. Pas de maçonnerie lourde : une solution efficace quand la cheminée n'est pas une option.",
+  },
+  {
+    titre: "Bois ou granulés, selon votre rythme",
+    texte:
+      "Le bois pour le geste et la chaleur franche ; les granulés pour l'automatisme et la longue autonomie. Nous vous orientons selon votre maison.",
+  },
+  {
+    titre: "Posé et suivi par nos équipes",
+    texte:
+      "Conseil, installation, mise en service et SAV : la même maison vous accompagne, comme pour une cheminée. Un seul interlocuteur.",
+  },
+];
 
 const poelesBois = [
   "Chaume 3",
@@ -26,92 +44,149 @@ const poelesGranules = [
 ---
 
 <BaseLayout
-  title="Poêles à bois & à granulés Cheminées Philippe — Évreux"
-  description="La gamme de poêles à bois et à granulés Cheminées Philippe, posés par nos équipes dans l'Eure. Conseil personnalisé au showroom de Normanville."
+  title="Poêles à bois & granulés — Cheminées Philippe Évreux"
+  description="Poêles à bois et à granulés Cheminées Philippe, posés par nos équipes dans l'Eure. Conseil personnalisé et devis gratuit. Showroom à Normanville."
 >
   <HeroEditorial
     kicker="Poêles à bois & à granulés"
-    title="Le poêle, quand la cheminée n'est pas l'option"
-    intro="Le poêle s'installe sans gros travaux et chauffe vite. La maison Cheminées Philippe en propose une gamme, du feu de bûches à l'automatisme des granulés."
+    title="Un poêle installé vite, conseillé juste"
+    intro="Quand la cheminée n'est pas l'option, le poêle chauffe vite et se pose sans gros travaux. Bois ou granulés : dites-nous votre besoin, nous vous orientons."
     image="/images/installations/149.webp"
-    imageAlt="Poêle installé dans une pièce de vie, le feu allumé"
-    ctaLabel="Échanger sur votre projet"
+    imageAlt="Appareil de chauffage au bois installé dans une pièce de vie, le feu allumé"
+    ctaLabel="Demander un devis gratuit"
     ctaHref="/contact"
+    reassurance="Conseil personnalisé et devis gratuit, sans engagement."
     height="short"
   />
 
-  <Manifeste
-    kicker="La gamme Cheminées Philippe"
-    title="Deux feux, deux façons de vivre la chaleur"
-    paragraphs={[
-      "Le poêle à bois, c'est le geste : fendre, charger, regarder la flambée prendre. Une chaleur franche et un plaisir simple, pour qui aime s'occuper de son feu.",
-      "Le poêle à granulés, c'est l'automatisme : on programme, on remplit le réservoir, l'appareil fait le reste. La chaleur du bois, sans la contrainte du quotidien.",
-      "Le bon choix dépend de votre maison, de votre rythme et de votre rapport au feu. C'est exactement le genre de conversation qui se mène mieux au showroom, devant les modèles.",
-    ]}
-  />
+  <section class="bg-white py-20 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
+          Pourquoi un poêle
+        </p>
+        <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl">
+          La solution simple pour chauffer au bois
+        </h2>
+      </div>
 
-  <section class="bg-white py-20 sm:py-28 lg:py-36">
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {benefices.map((b) => (
+          <article class="rounded-xl border border-warm-100 bg-warm-50 p-7 sm:p-8">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-brand-500 text-white" aria-hidden="true">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-xl sm:text-2xl text-ink-900">
+              {b.titre}
+            </h3>
+            <p class="mt-3 text-ink-600 leading-relaxed">{b.texte}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-warm-50 py-20 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-        <div>
-          <p class="text-xs uppercase tracking-[0.24em] text-brand-600">
+      <div class="max-w-2xl">
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
+          La gamme Cheminées Philippe
+        </p>
+        <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl">
+          Deux feux, deux façons de vivre la chaleur
+        </h2>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div class="rounded-xl border border-warm-100 bg-white p-7 sm:p-8">
+          <p class="text-xs uppercase tracking-[0.2em] text-brand-700 font-semibold">
             Poêles à bois
           </p>
-          <h2 class="mt-3 font-display text-2xl sm:text-3xl text-ink-900">
+          <h3 class="mt-2 font-display text-2xl sm:text-3xl text-ink-900">
             Le feu de bûches
-          </h2>
+          </h3>
           <p class="mt-3 text-ink-600 leading-relaxed">
             Du modèle compact au grand volume, pour le chauffage d'appoint comme
             pour la pièce de vie principale.
           </p>
-          <ul class="mt-7 divide-y divide-warm-100 border-y border-warm-100">
+          <ul class="mt-6 divide-y divide-warm-100 border-y border-warm-100">
             {poelesBois.map((nom) => (
               <li class="py-3.5 font-display text-lg text-ink-900">{nom}</li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <p class="text-xs uppercase tracking-[0.24em] text-brand-600">
+        <div class="rounded-xl border border-warm-100 bg-white p-7 sm:p-8">
+          <p class="text-xs uppercase tracking-[0.2em] text-brand-700 font-semibold">
             Poêles à granulés
           </p>
-          <h2 class="mt-3 font-display text-2xl sm:text-3xl text-ink-900">
+          <h3 class="mt-2 font-display text-2xl sm:text-3xl text-ink-900">
             Le confort automatique
-          </h2>
+          </h3>
           <p class="mt-3 text-ink-600 leading-relaxed">
             Programmation, longue autonomie, allumage automatique : la chaleur du
             bois pendant que vous vivez votre vie.
           </p>
-          <ul class="mt-7 divide-y divide-warm-100 border-y border-warm-100">
+          <ul class="mt-6 divide-y divide-warm-100 border-y border-warm-100">
             {poelesGranules.map((nom) => (
               <li class="py-3.5 font-display text-lg text-ink-900">{nom}</li>
             ))}
           </ul>
         </div>
       </div>
+
+      <div class="mt-10">
+        <a
+          href={url("/contact")}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300"
+        >
+          Demander un devis gratuit
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="bg-[#f4efe7] py-20 sm:py-28 lg:py-36">
+  <section class="bg-white py-20 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
-        Le conseil au showroom
+      <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
+        Notre engagement
       </p>
-      <h2 class="mt-6 font-display font-semibold text-ink-900 leading-[1.15] text-3xl sm:text-4xl">
-        Un poêle se choisit en le voyant
+      <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.15] text-3xl sm:text-4xl">
+        Le bon poêle, au juste besoin
       </h2>
-      <p class="mt-6 text-lg text-ink-600 leading-loose">
+      <p class="mt-5 text-lg text-ink-600 leading-relaxed">
         La taille, la matière, la place dans la pièce, le volume à chauffer : ces
-        questions trouvent leurs réponses au showroom de Normanville, devant les
-        appareils. Nos conseillers prennent le temps d'en parler avec vous, sans
-        rien vous vendre dans l'urgence.
+        questions trouvent leurs réponses lors de la visite-conseil ou au showroom
+        de Normanville. Nous prenons le temps d'en parler avec vous, sans rien
+        vous vendre dans l'urgence.
       </p>
+      <div class="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-5">
+        <a
+          href={url("/contact")}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300"
+        >
+          Demander un devis gratuit
+        </a>
+        <a
+          href="tel:+33232333193"
+          class="inline-flex items-center justify-center gap-2.5 px-2 py-4 font-display text-xl text-ink-900 hover:text-brand-700 transition-colors duration-300"
+        >
+          <svg class="w-5 h-5 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          02 32 33 31 93
+        </a>
+      </div>
     </div>
   </section>
 
   <CTA
-    kicker="Parlons-en"
+    kicker="Votre projet"
     heading="Trouvons votre poêle ensemble"
     description="Un conseiller vous reçoit au showroom ou se déplace chez vous pour évaluer votre besoin et vous orienter — bois ou granulés."
+    ctaLabel="Demander un devis gratuit"
   />
 </BaseLayout>
+</content>

@@ -10,16 +10,17 @@ const mapsHref =
 ---
 
 <BaseLayout
-  title="Contact & devis — Cheminées Philippe Évreux, Normanville"
-  description="Parlez-nous de votre projet de cheminée, de foyer ou de poêle. Showroom Cheminées Philippe à Normanville près d'Évreux, 02 32 33 31 93. Devis gratuit."
+  title="Devis gratuit cheminée Évreux — Cheminées Philippe"
+  description="Demandez votre devis gratuit pour une cheminée, un foyer ou un poêle. Showroom Cheminées Philippe à Normanville près d'Évreux, 02 32 33 31 93. Sans engagement."
 >
   <HeroEditorial
-    kicker="Contact"
-    title="Parlons de votre projet"
-    intro="Un projet de cheminée sur mesure, de foyer ou de poêle ? Décrivez-le en quelques lignes, ou appelez simplement le showroom. La visite technique et le devis sont gratuits."
+    kicker="Devis gratuit"
+    title="Demandez votre devis gratuit"
+    intro="Décrivez votre projet de cheminée, de foyer ou de poêle en quelques lignes, ou appelez directement le showroom. Visite-conseil et devis gratuits, sans engagement."
     image="/images/installations/178.webp"
     imageAlt="Cheminée sur mesure installée dans un séjour, le feu allumé"
     showPhone={true}
+    reassurance="Réponse sous 48 h ouvrées — un conseiller vous rappelle."
     height="short"
   />
 
@@ -27,7 +28,7 @@ const mapsHref =
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-14 lg:gap-20">
         <div>
-          <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+          <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
             Demande de devis
           </p>
           <h2 class="mt-5 font-display font-semibold text-ink-900 leading-[1.14] text-3xl sm:text-4xl">
@@ -35,9 +36,24 @@ const mapsHref =
           </h2>
           <p class="mt-5 text-lg text-ink-600 leading-relaxed">
             Quelques lignes suffisent. Un conseiller vous rappelle pour préciser
-            votre projet et organiser la visite. Les champs marqués d'un
-            astérisque (<span class="text-brand-600">*</span>) sont obligatoires.
+            votre projet et organiser la visite-conseil. Les champs marqués d'un
+            astérisque (<span class="text-brand-700">*</span>) sont obligatoires.
           </p>
+
+          <ul class="mt-7 flex flex-wrap gap-x-6 gap-y-2.5">
+            {[
+              "Réponse sous 48 h ouvrées",
+              "Devis gratuit et sans engagement",
+              "Visite-conseil offerte à domicile",
+            ].map((point) => (
+              <li class="flex items-center gap-2 text-ink-700">
+                <svg class="w-5 h-5 flex-shrink-0 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+                </svg>
+                {point}
+              </li>
+            ))}
+          </ul>
 
           <form
             id="devis-form"
@@ -61,7 +77,7 @@ const mapsHref =
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
               <div>
                 <label for="nom" class="block text-sm font-semibold text-ink-900">
-                  Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
+                  Nom complet <span class="text-brand-700" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="text"
@@ -70,12 +86,12 @@ const mapsHref =
                   required
                   aria-required="true"
                   autocomplete="name"
-                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
                 />
               </div>
               <div>
                 <label for="telephone" class="block text-sm font-semibold text-ink-900">
-                  Téléphone <span class="text-brand-600" aria-hidden="true">*</span>
+                  Téléphone <span class="text-brand-700" aria-hidden="true">*</span>
                 </label>
                 <input
                   type="tel"
@@ -84,14 +100,14 @@ const mapsHref =
                   required
                   aria-required="true"
                   autocomplete="tel"
-                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
                 />
               </div>
             </div>
 
             <div>
               <label for="email" class="block text-sm font-semibold text-ink-900">
-                Email <span class="text-brand-600" aria-hidden="true">*</span>
+                Email <span class="text-brand-700" aria-hidden="true">*</span>
               </label>
               <input
                 type="email"
@@ -100,21 +116,21 @@ const mapsHref =
                 required
                 aria-required="true"
                 autocomplete="email"
-                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
               />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
               <div>
                 <label for="type-projet" class="block text-sm font-semibold text-ink-900">
-                  Type de projet <span class="text-brand-600" aria-hidden="true">*</span>
+                  Type de projet <span class="text-brand-700" aria-hidden="true">*</span>
                 </label>
                 <select
                   id="type-projet"
                   name="type_projet"
                   required
                   aria-required="true"
-                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
                 >
                   <option value="">— Sélectionnez —</option>
                   <option value="Cheminée sur mesure">Cheminée sur mesure</option>
@@ -132,7 +148,7 @@ const mapsHref =
                 <select
                   id="delai"
                   name="delai"
-                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                  class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
                 >
                   <option value="">— Sélectionnez —</option>
                   <option value="Dès que possible">Dès que possible</option>
@@ -153,7 +169,7 @@ const mapsHref =
                 name="message"
                 rows="5"
                 placeholder="La pièce, son ambiance, un conduit existant ou non, un style qui vous attire…"
-                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-[#fbf8f2] focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
+                class="mt-2 w-full px-4 py-3 text-base rounded-md border border-warm-200 bg-warm-50 focus:border-brand-500 focus:bg-white focus-visible:ring-2 focus-visible:ring-brand-500/25 outline-none transition"
               ></textarea>
             </div>
 
@@ -162,7 +178,7 @@ const mapsHref =
               sujet de votre projet. Pour en savoir plus, consultez notre{" "}
               <a
                 href={url("/politique-de-confidentialite")}
-                class="underline text-brand-600 hover:text-brand-700"
+                class="underline text-brand-700 hover:text-brand-800"
               >
                 politique de confidentialité
               </a>.
@@ -171,9 +187,9 @@ const mapsHref =
             <button
               type="submit"
               id="submit-btn"
-              class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-500 text-white text-lg font-semibold hover:bg-brand-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span id="submit-label">Envoyer ma demande</span>
+              <span id="submit-label">Demander mon devis gratuit</span>
               <svg id="submit-spinner" class="hidden animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -185,27 +201,27 @@ const mapsHref =
             </p>
           </form>
 
-          <div id="form-success" class="hidden mt-8 p-7 rounded-2xl bg-[#f4efe7] border border-brand-200">
+          <div id="form-success" class="hidden mt-8 p-7 rounded-2xl bg-warm-50 border border-brand-200">
             <h3 class="font-display text-xl text-ink-900">Demande reçue, merci.</h3>
             <p class="mt-2 text-ink-600 leading-relaxed">
               Un conseiller vous rappelle dans les meilleurs délais. Pour nous
               joindre tout de suite, appelez le{" "}
-              <a href="tel:+33232333193" class="font-semibold text-brand-600 hover:text-brand-700">
+              <a href="tel:+33232333193" class="font-semibold text-brand-700 hover:text-brand-800">
                 02 32 33 31 93
               </a>.
             </p>
           </div>
 
-          <div id="form-error" class="hidden mt-8 p-7 rounded-2xl bg-[#f4efe7] border border-brand-300">
+          <div id="form-error" class="hidden mt-8 p-7 rounded-2xl bg-warm-50 border border-brand-300">
             <h3 class="font-display text-xl text-ink-900">L'envoi a échoué.</h3>
             <p class="mt-2 text-ink-600 leading-relaxed">
               Un problème technique nous empêche de recevoir votre demande. Merci
               de nous appeler au{" "}
-              <a href="tel:+33232333193" class="font-semibold text-brand-600 hover:text-brand-700">
+              <a href="tel:+33232333193" class="font-semibold text-brand-700 hover:text-brand-800">
                 02 32 33 31 93
               </a>{" "}
               ou de nous écrire à{" "}
-              <a href="mailto:cheminexpo@wanadoo.fr" class="font-semibold text-brand-600 hover:text-brand-700">
+              <a href="mailto:cheminexpo@wanadoo.fr" class="font-semibold text-brand-700 hover:text-brand-800">
                 cheminexpo@wanadoo.fr
               </a>.
             </p>
@@ -279,7 +295,7 @@ const mapsHref =
   function restoreSubmit() {
     if (!submitBtn) return;
     submitBtn.disabled = false;
-    submitLabel.textContent = "Envoyer ma demande";
+    submitLabel.textContent = "Demander mon devis gratuit";
     submitSpinner.classList.add("hidden");
   }
 

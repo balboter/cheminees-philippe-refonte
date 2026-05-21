@@ -1,70 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroEditorial from "../components/HeroEditorial.astro";
-import Manifeste from "../components/Manifeste.astro";
 import ProjetTroisTemps from "../components/ProjetTroisTemps.astro";
-import MatieresSavoirFaire from "../components/MatieresSavoirFaire.astro";
 import Realisations from "../components/Realisations.astro";
+import PourquoiNous from "../components/PourquoiNous.astro";
 import CTA from "../components/CTA.astro";
 import { url } from "../lib/url";
 
+const benefices = [
+  {
+    titre: "Une cheminée qui s'ajuste à votre pièce",
+    texte:
+      "Pas l'inverse. Dimensions, conduit, lumière : votre cheminée est dessinée pour cet espace précis, jamais imposée par un catalogue.",
+  },
+  {
+    titre: "Fabriquée en France, posée par nos équipes",
+    texte:
+      "Cheminées Philippe façonne la matière depuis 1961. Nos techniciens salariés assurent la pose et la mise en service. Un seul interlocuteur.",
+  },
+  {
+    titre: "Un devis clair, sans mauvaise surprise",
+    texte:
+      "Après la visite-conseil gratuite, vous recevez un projet chiffré : matières, dimensions, délai. Vous validez avant tout démarrage.",
+  },
+];
+
 const temps = [
   {
-    titre: "La conception, chez vous",
+    titre: "La visite-conseil, chez vous et gratuite",
     texte:
-      "Tout commence par une visite. Le conseiller mesure la pièce, observe la lumière du matin et du soir, repère la place du conduit, écoute la façon dont vous habitez l'espace. C'est de cette conversation que naît le dessin de votre cheminée.",
+      "Le conseiller mesure la pièce, observe la lumière, repère la place du conduit, écoute votre besoin. De cette visite naît le dessin de votre cheminée — et un devis clair.",
   },
   {
-    titre: "La fabrication, en atelier",
+    titre: "La fabrication, en atelier français",
     texte:
-      "Le projet rejoint les ateliers Cheminées Philippe. Là, la pierre est taillée, la fonte coulée, le marbre poli, le fer forgé. Chaque pièce est façonnée pour votre habillage, à vos dimensions — pas à celles d'un catalogue.",
+      "Le projet validé rejoint les ateliers Cheminées Philippe. Pierre taillée, fonte coulée, marbre poli, fer forgé : chaque pièce est façonnée à vos dimensions.",
   },
   {
-    titre: "La pose, par nos équipes",
+    titre: "La pose, par nos techniciens",
     texte:
-      "Nos techniciens installent la cheminée, raccordent le conduit aux normes, ajustent les finitions. Le jour de la mise en service, ils allument le premier feu avec vous et vous expliquent comment en prendre soin.",
-  },
-];
-
-const matieres = [
-  {
-    nom: "Pierre bleue",
-    legende:
-      "La pierre bleue du Hainaut, dense et veinée, pour les cheminées qui veulent une présence sobre et durable.",
-  },
-  {
-    nom: "Fonte",
-    legende:
-      "Le cœur de l'appareil : la fonte accumule la chaleur et la restitue longtemps après la flambée.",
-  },
-  {
-    nom: "Marbre",
-    legende:
-      "Tablettes et encadrements taillés et polis à la marbrerie, pour la finition qui transforme un foyer en cheminée.",
-  },
-  {
-    nom: "Ferronnerie",
-    legende:
-      "Linteaux et détails forgés à la main : ce qui donne son caractère à une cheminée, sans jamais l'alourdir.",
-  },
-];
-
-const inspirations = [
-  {
-    image: "/images/installations/167.webp",
-    alt: "Cheminée d'inspiration classique en pierre de taille, foyer central",
-    style: "Inspiration classique",
-    titre: "La cheminée de toujours, revisitée",
-    texte:
-      "Pierre franche, proportions généreuses, foyer central. La cheminée à laquelle on pense d'instinct — à laquelle Cheminées Philippe ajoute les rendements d'aujourd'hui.",
-  },
-  {
-    image: "/images/installations/183.webp",
-    alt: "Cheminée contemporaine au foyer largement vitré dans une pièce ouverte",
-    style: "Inspiration contemporaine",
-    titre: "Quand la flamme devient le seul ornement",
-    texte:
-      "Lignes épurées, large vitre, habillage discret. La cheminée contemporaine s'efface pour laisser toute la place au feu et à la pièce.",
+      "Nos équipes installent la cheminée, raccordent le conduit aux normes, ajustent les finitions, puis allument le premier feu avec vous.",
   },
 ];
 
@@ -88,115 +63,115 @@ const realisations = [
     lieu: "Gisors",
   },
 ];
+
+const atouts = [
+  {
+    titre: "Cinq métiers réunis chez le fabricant",
+    texte:
+      "Fonderie, marbrerie, ferronnerie, céramique, émail : c'est cette concentration de savoir-faire qui rend le vrai sur-mesure possible.",
+  },
+  {
+    titre: "Des poseurs salariés, jamais de sous-traitance",
+    texte:
+      "La même maison conçoit, fait fabriquer et installe. Vous gardez un seul interlocuteur du devis au SAV.",
+  },
+  {
+    titre: "Un accompagnement jusqu'au premier feu",
+    texte:
+      "Le jour de la mise en service, nos techniciens allument le feu avec vous et vous expliquent comment en prendre soin.",
+  },
+];
 ---
 
 <BaseLayout
-  title="Cheminées sur mesure Cheminées Philippe — Évreux & Normandie"
-  description="Une cheminée sur mesure dessinée pour votre pièce, fabriquée en France par Cheminées Philippe et posée dans l'Eure par nos équipes. Devis et visite gratuits."
+  title="Cheminée sur mesure Eure — Philippe, devis gratuit"
+  description="Une cheminée sur mesure dessinée pour votre pièce, fabriquée en France et posée dans l'Eure par nos équipes. Visite-conseil et devis gratuits, sans engagement."
 >
   <HeroEditorial
     kicker="Cheminées sur mesure"
-    title="Une cheminée pensée pour cette pièce, et pour aucune autre"
-    intro="Le sur-mesure n'ajoute pas de la complexité. Il enlève le hasard. Votre cheminée part de votre pièce, de vos murs, de votre lumière — puis elle est façonnée pour eux."
+    title="Une cheminée dessinée pour votre pièce, posée clé en main"
+    intro="Le sur-mesure enlève le hasard : votre cheminée part de vos murs, de votre conduit, de votre lumière. Conçue, fabriquée et installée par une seule maison."
     image="/images/installations/178.webp"
     imageAlt="Cheminée d'angle sur mesure installée dans un séjour, le feu allumé"
-    ctaLabel="Échanger sur votre projet"
+    ctaLabel="Demander un devis gratuit"
     ctaHref="/contact"
+    reassurance="Visite-conseil gratuite à domicile, partout dans l'Eure."
+    height="short"
   />
 
-  <Manifeste
-    kicker="Qu'est-ce qu'une cheminée sur mesure"
-    title="Ni un meuble que l'on pose, ni un produit que l'on choisit"
-    paragraphs={[
-      "Une cheminée de catalogue arrive avec ses dimensions. À vous de trouver le mur qui les accepte. Une cheminée sur mesure fait l'inverse : c'est elle qui s'ajuste à votre pièce.",
-      "Chez Cheminées Philippe, le sur-mesure n'est pas une option. C'est le métier même de la maison : une fonderie, une marbrerie et une ferronnerie réunies au même endroit, capables de façonner chaque habillage à la demande.",
-      "Le résultat n'est pas un appareil ajouté à votre salon. C'est une pièce qui semble avoir toujours été là.",
-    ]}
-  />
-
-  <ProjetTroisTemps
-    kicker="Le sur-mesure expliqué"
-    title="De la conception au premier feu"
-    intro="Trois temps, un seul interlocuteur, du croquis à la flambée."
-    temps={temps}
-    variant="cream"
-  />
-
-  <section class="bg-white py-20 sm:py-28 lg:py-36">
+  <section class="bg-white py-20 sm:py-24 lg:py-28">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
-          Inspirations & styles
+        <p class="text-xs sm:text-sm uppercase tracking-[0.22em] text-brand-700 font-semibold">
+          Pourquoi le sur-mesure
         </p>
-        <h2 class="mt-5 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl">
-          Deux esprits, un même soin
+        <h2 class="mt-4 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl">
+          Trois bonnes raisons de nous confier votre projet
         </h2>
-        <p class="mt-5 text-lg text-ink-600 leading-relaxed">
-          Classique ou contemporaine, votre cheminée part toujours d'un dessin que
-          nous adaptons à votre pièce. Voici deux points de départ.
-        </p>
       </div>
 
-      <div class="mt-12 sm:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
-        {inspirations.map((i) => (
-          <article class="group">
-            <div class="overflow-hidden">
-              <img
-                src={url(i.image)}
-                alt={i.alt}
-                width="900"
-                height="675"
-                loading="lazy"
-                class="w-full aspect-[4/3] object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-              />
-            </div>
-            <p class="mt-6 text-xs uppercase tracking-[0.24em] text-brand-600">
-              {i.style}
-            </p>
-            <h3 class="mt-2 font-display text-2xl sm:text-3xl text-ink-900 leading-snug">
-              {i.titre}
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {benefices.map((b) => (
+          <article class="rounded-xl border border-warm-100 bg-warm-50 p-7 sm:p-8">
+            <span class="flex items-center justify-center w-11 h-11 rounded-full bg-brand-500 text-white" aria-hidden="true">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-xl sm:text-2xl text-ink-900">
+              {b.titre}
             </h3>
-            <p class="mt-3 text-lg text-ink-600 leading-relaxed">{i.texte}</p>
+            <p class="mt-3 text-ink-600 leading-relaxed">{b.texte}</p>
           </article>
         ))}
       </div>
 
-      <p class="mt-12 text-ink-600 leading-relaxed max-w-2xl">
-        D'autres modèles, finitions et matières sont présentés dans notre showroom
-        de Normanville.{" "}
+      <div class="mt-10">
         <a
           href={url("/contact")}
-          class="text-brand-600 hover:text-brand-700 underline underline-offset-4"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-600 text-white text-lg font-bold hover:bg-brand-700 transition-colors duration-300"
         >
-          Venez les voir de près
-        </a>.
-      </p>
+          Demander un devis gratuit
+        </a>
+      </div>
     </div>
   </section>
 
-  <MatieresSavoirFaire
-    kicker="Matières & savoir-faire"
-    title="La cheminée se juge à la matière"
-    intro="Pierre, fonte, marbre, fer : ce sont les matières qui font qu'une cheminée se regarde longtemps. Toutes sont travaillées en atelier, à la main."
-    image="/images/installations/166.webp"
-    imageAlt="Gros plan sur l'habillage de pierre et de marbre d'une cheminée Cheminées Philippe"
-    matieres={matieres}
+  <ProjetTroisTemps
+    kicker="Le sur-mesure expliqué"
+    title="De la visite-conseil au premier feu"
+    intro="Trois étapes, un seul interlocuteur. La première — la visite-conseil — est gratuite et sans engagement."
+    temps={temps}
     variant="cream"
+    ctaLabel="Réserver ma visite-conseil"
+    ctaHref="/contact"
   />
 
   <Realisations
-    kicker="Réalisations"
-    title="Des cheminées posées près de chez vous"
-    intro="Conçues, fabriquées et installées pour de vrais intérieurs de l'Eure et de Normandie."
+    kicker="Nos réalisations"
+    title="Des cheminées sur mesure posées près de chez vous"
+    intro="Conçues, fabriquées et installées pour de vrais intérieurs de l'Eure et de Normandie. La preuve concrète de notre savoir-faire."
     items={realisations}
     lienLabel="Voir toutes nos réalisations"
     lienHref="/realisations"
     variant="white"
   />
 
+  <PourquoiNous
+    kicker="Pourquoi nous choisir"
+    title="Le savoir-faire d'un fabricant, le suivi d'un artisan local"
+    intro="Vous bénéficiez d'un produit façonné en France et d'une équipe locale qui connaît vos maisons normandes — et reste joignable une fois le feu allumé."
+    image="/images/installations/166.webp"
+    imageAlt="Gros plan sur l'habillage de pierre et de marbre d'une cheminée Cheminées Philippe"
+    atouts={atouts}
+    variant="warm"
+  />
+
   <CTA
-    kicker="Parlons-en"
+    kicker="Votre projet"
     heading="Et si votre cheminée prenait forme ?"
-    description="Un conseiller se déplace gratuitement, prend les mesures et dessine avec vous le projet adapté à votre pièce."
+    description="Un conseiller se déplace gratuitement, prend les mesures et vous remet un devis clair, adapté à votre pièce."
+    ctaLabel="Demander un devis gratuit"
   />
 </BaseLayout>
+</content>

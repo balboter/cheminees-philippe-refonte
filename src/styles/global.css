@@ -1,43 +1,36 @@
 @import "tailwindcss";
 
-/* Identité Cheminées Philippe — registre artisan / matière
-   (brique-braise + ardoise + pierre + bois) */
+/* Identité Cheminées Philippe — rouge vif, registre net & orienté conversion */
 
 @theme {
-  --color-brand-50: #faf0ec;
-  --color-brand-100: #f4ddd4;
-  --color-brand-200: #e8bcac;
-  --color-brand-300: #d9967f;
-  --color-brand-400: #c66d51;
-  --color-brand-500: #a8442b;
-  --color-brand-600: #913a25;
-  --color-brand-700: #76301f;
-  --color-brand-800: #5c271a;
-  --color-brand-900: #421d14;
-  --color-brand-950: #24100b;
+  --color-brand-50: #fef2f2;
+  --color-brand-100: #fde0e0;
+  --color-brand-200: #fbc4c5;
+  --color-brand-300: #f79a9c;
+  --color-brand-400: #f15457;
+  --color-brand-500: #ef181c; /* le rouge de marque — accents, icônes, kickers */
+  --color-brand-600: #cf1014; /* fonds de bouton CTA (texte blanc, WCAG AA) */
+  --color-brand-700: #aa0e12; /* texte rouge sur blanc (contraste AA) */
+  --color-brand-800: #870d10;
+  --color-brand-900: #5f0d0f;
+  --color-brand-950: #350608;
 
-  --color-ink-50: #f7f6f4;
-  --color-ink-100: #ecebe7;
-  --color-ink-200: #d9d7d0;
-  --color-ink-300: #b6b2a8;
-  --color-ink-400: #847f74;
-  --color-ink-500: #545049;
-  --color-ink-600: #3c3935;
-  --color-ink-700: #2a2823;
-  --color-ink-800: #232227;
-  --color-ink-900: #161519;
+  --color-ink-50: #f7f7f7;
+  --color-ink-100: #ededed;
+  --color-ink-200: #d9d9d9;
+  --color-ink-300: #b6b6b6;
+  --color-ink-400: #828282;
+  --color-ink-500: #565656;
+  --color-ink-600: #3c3c3c;
+  --color-ink-700: #2a2a2a;
+  --color-ink-800: #232323;
+  --color-ink-900: #161616;
   --color-ink-950: #000000;
 
-  /* Ardoise bleutée — clin d'œil à la pierre bleue de Hainaut des produits Philippe */
-  --color-slate-soft: #4c545c;
-
-  /* Crème pierre — fonds de section */
-  --color-warm-50: #f4efe7;
-  --color-warm-100: #e9e0d2;
-  --color-warm-200: #ddd5c5;
-
-  /* Bois / terre — touche chaude */
-  --color-bronze: #8a6a47;
+  /* Neutres clairs — fonds de section (blanc + gris clair) */
+  --color-warm-50: #f6f6f5;
+  --color-warm-100: #e9e9e8;
+  --color-warm-200: #d9d9d7;
 
   --font-sans: "Mulish", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -57,7 +50,7 @@
   body {
     font-family: var(--font-sans);
     color: var(--color-ink-800);
-    background-color: #fbf8f2;
+    background-color: #ffffff;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -117,13 +110,5 @@
     transform: translateY(0);
   }
 }
-
-/* Animation badge "Concessionnaire depuis 1986" — glow subtil */
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(168, 68, 43, 0);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(168, 68, 43, 0.15);
-  }
-}
+</content>
+</invoke>

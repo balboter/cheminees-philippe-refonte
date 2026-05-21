@@ -1,0 +1,40 @@
+---
+const items = [
+  { label: "RGE Qualibois", detail: "Pose qualifiée, aides accessibles" },
+  { label: "Flamme Verte", detail: "Appareils à haut rendement" },
+  { label: "Concessionnaire depuis 1986", detail: "Implantés dans l'Eure" },
+  { label: "Fabrication française", detail: "Cheminées Philippe, depuis 1961" },
+];
+---
+
+<section class="bg-warm-50 border-y border-warm-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-7">
+      {items.map((item) => (
+        <li class="flex items-start gap-3">
+          <svg
+            class="w-6 h-6 flex-shrink-0 text-brand-500 mt-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <div>
+            <p class="font-display text-base sm:text-lg text-ink-900 leading-tight">
+              {item.label}
+            </p>
+            <p class="mt-0.5 text-sm text-ink-500 leading-snug">{item.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+</content>
