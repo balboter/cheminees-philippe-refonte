@@ -13,12 +13,12 @@ const navLinks = [
 
 <header class="sticky top-0 z-40 bg-ink-950/95 backdrop-blur border-b border-ink-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-center md:justify-between gap-4 py-3">
-      <a href={url("/")} class="flex items-center group" aria-label="Cheminées Philippe Évreux — retour accueil">
-        <span class="flex flex-col leading-none">
+    <div class="flex items-center justify-between gap-3 py-3">
+      <a href={url("/")} class="flex items-center group min-w-0" aria-label="Cheminées Philippe Évreux — retour accueil">
+        <span class="flex flex-col leading-none min-w-0">
           <span class="font-display text-xl sm:text-2xl font-semibold text-white">Cheminées Philippe</span>
-          <span class="mt-1 text-[11px] sm:text-xs text-brand-400 uppercase tracking-[0.18em]">
-            Évreux · concessionnaire depuis 1986
+          <span class="mt-1 text-[11px] sm:text-xs text-brand-400 uppercase tracking-[0.1em] sm:tracking-[0.16em] truncate">
+            Évreux · depuis 1986
           </span>
         </span>
       </a>
@@ -52,7 +52,7 @@ const navLinks = [
 
       <button
         type="button"
-        class="absolute right-0 top-1/2 -translate-y-1/2 md:static md:translate-y-0 lg:hidden flex items-center justify-center w-12 h-12 text-white rounded hover:bg-ink-800 transition"
+        class="lg:hidden flex-shrink-0 -mr-2 flex items-center justify-center w-12 h-12 text-white rounded hover:bg-ink-800 transition"
         aria-label="Ouvrir le menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
