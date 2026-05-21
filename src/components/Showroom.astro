@@ -1,0 +1,109 @@
+---
+import { url } from "../lib/url";
+
+interface Props {
+  kicker?: string;
+  title: string;
+  intro?: string;
+  image: string;
+  imageAlt: string;
+  variant?: "cream" | "white";
+}
+
+const {
+  kicker = "Le showroom",
+  title,
+  intro,
+  image,
+  imageAlt,
+  variant = "cream",
+} = Astro.props;
+
+const bg = variant === "white" ? "bg-white" : "bg-[#f4efe7]";
+const mapsHref =
+  "https://www.google.com/maps/dir/?api=1&destination=Centre%20commercial%20Caer%2C%2027930%20Normanville";
+---
+
+<section class={`${bg} py-20 sm:py-28 lg:py-36`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+          {kicker}
+        </p>
+        <h2
+          class="mt-5 font-display font-semibold text-ink-900 leading-[1.14] text-3xl sm:text-4xl lg:text-[2.6rem]"
+        >
+          {title}
+        </h2>
+        {intro && (
+          <p class="mt-5 text-lg text-ink-600 leading-relaxed">{intro}</p>
+        )}
+
+        <dl class="mt-10 space-y-6">
+          <div>
+            <dt class="text-xs uppercase tracking-[0.2em] text-ink-500">Adresse</dt>
+            <dd class="mt-1.5 text-ink-800 leading-relaxed">
+              <address class="not-italic">
+                Centre commercial Caer, Route de Rouen<br />
+                27930 Normanville (Eure)
+              </address>
+            </dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[0.2em] text-ink-500">Horaires</dt>
+            <dd class="mt-1.5 text-ink-800 leading-relaxed">
+              Mardi au vendredi : 9h-12h / 14h-18h<br />
+              Samedi : 10h-12h / 14h-18h
+            </dd>
+          </div>
+          <div>
+            <dt class="text-xs uppercase tracking-[0.2em] text-ink-500">Téléphone</dt>
+            <dd class="mt-1.5">
+              <a
+                href="tel:+33232333193"
+                class="font-display text-2xl text-ink-900 hover:text-brand-600 transition-colors duration-300"
+              >
+                02 32 33 31 93
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a
+            href={mapsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-colors duration-300"
+          >
+            Ouvrir l'itinéraire<span class="sr-only"> (ouvre dans un nouvel onglet)</span>
+          </a>
+          <a
+            href={url("/contact")}
+            class="group inline-flex items-center gap-2 px-1 py-3.5 font-display text-xl text-ink-900 hover:text-brand-600 transition-colors duration-300"
+          >
+            Préparer votre visite
+            <span
+              class="inline-block transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              &rarr;
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <figure class="overflow-hidden order-first lg:order-last">
+        <img
+          src={url(image)}
+          alt={imageAlt}
+          width="1000"
+          height="800"
+          loading="lazy"
+          class="w-full aspect-[5/4] object-cover"
+        />
+      </figure>
+    </div>
+  </div>
+</section>

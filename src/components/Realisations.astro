@@ -1,0 +1,94 @@
+---
+import { url } from "../lib/url";
+
+interface Item {
+  image: string;
+  alt: string;
+  legende: string;
+  lieu: string;
+}
+
+interface Props {
+  kicker?: string;
+  title: string;
+  intro?: string;
+  items: Item[];
+  lienLabel?: string;
+  lienHref?: string;
+  variant?: "cream" | "white";
+}
+
+const {
+  kicker = "Réalisations",
+  title,
+  intro,
+  items,
+  lienLabel,
+  lienHref = "/realisations",
+  variant = "white",
+} = Astro.props;
+
+const bg = variant === "cream" ? "bg-[#f4efe7]" : "bg-white";
+---
+
+<section class={`${bg} py-20 sm:py-28 lg:py-36`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+        {kicker}
+      </p>
+      <h2
+        class="mt-5 font-display font-semibold text-ink-900 leading-[1.12] text-3xl sm:text-4xl lg:text-5xl"
+      >
+        {title}
+      </h2>
+      {intro && (
+        <p class="mt-5 text-lg text-ink-600 leading-relaxed">{intro}</p>
+      )}
+    </div>
+
+    <div class="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      {items.map((item, i) => (
+        <figure
+          class={`group overflow-hidden ${
+            i === 0 ? "sm:col-span-2 lg:col-span-1" : ""
+          }`}
+        >
+          <div class="overflow-hidden">
+            <img
+              src={url(item.image)}
+              alt={item.alt}
+              width="800"
+              height="600"
+              loading="lazy"
+              class="w-full aspect-[3/2] object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+            />
+          </div>
+          <figcaption class="mt-4">
+            <p class="font-display text-lg text-ink-900">{item.legende}</p>
+            <p class="mt-0.5 text-sm uppercase tracking-[0.14em] text-ink-500">
+              {item.lieu}
+            </p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    {lienLabel && (
+      <div class="mt-12 sm:mt-14">
+        <a
+          href={url(lienHref)}
+          class="group inline-flex items-center gap-2 font-display text-xl text-ink-900 hover:text-brand-600 transition-colors duration-300"
+        >
+          {lienLabel}
+          <span
+            class="inline-block transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true"
+          >
+            &rarr;
+          </span>
+        </a>
+      </div>
+    )}
+  </div>
+</section>

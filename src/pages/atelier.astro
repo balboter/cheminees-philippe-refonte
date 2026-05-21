@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroEditorial from "../components/HeroEditorial.astro";
+import Manifeste from "../components/Manifeste.astro";
+import MatieresSavoirFaire from "../components/MatieresSavoirFaire.astro";
+import Showroom from "../components/Showroom.astro";
+import CTA from "../components/CTA.astro";
+
+const matieres = [
+  {
+    nom: "Fonderie",
+    legende:
+      "Foyers et inserts sont coulés en fonte, un matériau qui accumule la chaleur et la rend longtemps après l'extinction des braises.",
+  },
+  {
+    nom: "Marbrerie",
+    legende:
+      "Pierre et marbre sont taillés et polis pour épouser votre pièce. Un habillage qui s'intègre, jamais un meuble que l'on pose.",
+  },
+  {
+    nom: "Ferronnerie",
+    legende:
+      "Linteaux, contrecœurs et détails forgés à la main : c'est la ferronnerie qui donne à chaque cheminée son caractère.",
+  },
+  {
+    nom: "Céramique & émail",
+    legende:
+      "Surfaces émaillées et pièces de céramique apportent la couleur, la douceur du toucher et une finition cuite pour durer.",
+  },
+];
+---
+
+<BaseLayout
+  title="L'atelier & le savoir-faire — Cheminées Philippe Évreux"
+  description="Concessionnaire Cheminées Philippe depuis 1986 à Normanville. L'histoire de la maison, l'artisanat du fabricant français et notre équipe d'installation."
+>
+  <HeroEditorial
+    kicker="L'atelier & le savoir-faire"
+    title="Derrière chaque cheminée, des mains et un atelier"
+    intro="Une cheminée Cheminées Philippe est le fruit de deux métiers : celui d'un fabricant français qui façonne la matière, et celui d'un concessionnaire local qui la fait entrer chez vous."
+    image="/images/installations/166.webp"
+    imageAlt="Détail d'une cheminée Cheminées Philippe : habillage de pierre et tablette de marbre"
+    showPhone={false}
+    height="short"
+  />
+
+  <Manifeste
+    kicker="Notre maison"
+    title="Concessionnaire dans l'Eure depuis 1986"
+    paragraphs={[
+      "La société Loisirs Habitat Diffusion a ouvert son showroom à Normanville en 1986. Depuis, le métier n'a pas changé : conseiller, installer et suivre des cheminées chez les particuliers de la région.",
+      "Nous sommes concessionnaire de la marque Cheminées Philippe. Concrètement : nous distribuons et installons ses appareils. Nous ne les fabriquons pas — la fabrication est l'affaire de Cheminées Philippe, le fabricant que nous vous présentons juste après.",
+      "Ce double rôle est notre force. Vous recevez un produit façonné en France et un interlocuteur local, qui connaît vos maisons normandes et reste joignable une fois le feu allumé.",
+    ]}
+  />
+
+  <Manifeste
+    kicker="Le fabricant"
+    title="Cheminées Philippe, fabricant français depuis 1961"
+    paragraphs={[
+      "Cheminées Philippe est né en 1961. Sa singularité tient en une réunion rare : sous un même toit, une fonderie, une marbrerie, une ferronnerie et un atelier de céramique.",
+      "C'est cette concentration de métiers qui rend le vrai sur-mesure possible. Chaque habillage peut être façonné à la demande, à vos dimensions, parce que toutes les matières se travaillent au même endroit.",
+      "C'est cet artisanat que nous mettons à votre service. Une cheminée sur mesure n'est pas un produit de catalogue : elle est dessinée pour votre pièce, puis fabriquée pour elle.",
+    ]}
+    variant="white"
+  />
+
+  <MatieresSavoirFaire
+    kicker="Les matières, en détail"
+    title="Quatre métiers, une seule cheminée"
+    intro="Voici les savoir-faire que la maison Cheminées Philippe réunit, et que l'on retrouve dans chaque appareil installé chez vous."
+    image="/images/installations/178.webp"
+    imageAlt="Cheminée d'angle sur mesure mettant en valeur la pierre et la ferronnerie"
+    matieres={matieres}
+    variant="cream"
+  />
+
+  <Manifeste
+    kicker="L'équipe d'installation"
+    title="Du premier conseil au dernier réglage, la même maison"
+    paragraphs={[
+      "Nos conseillers vous reçoivent au showroom et se déplacent chez vous pour étudier la pièce, le conduit et vos besoins. Ce sont eux qui dessinent votre projet.",
+      "Nos poseurs sont salariés de l'entreprise. Pas de sous-traitance : la même équipe assure la pose, le raccordement et la mise en service. Après l'installation, nous restons votre interlocuteur — entretien, ramonage, pièces, vous nous rappelez directement.",
+    ]}
+    variant="white"
+  />
+
+  <Showroom
+    kicker="Le showroom"
+    title="Venez voir le feu à Normanville"
+    intro="Notre showroom présente cheminées, foyers et poêles dans des ambiances proches d'un vrai salon. Rien ne remplace une cheminée vue en vrai — la flamme, la matière, les proportions."
+    image="/images/installations/183.webp"
+    imageAlt="Cheminée présentée dans le showroom Cheminées Philippe de Normanville"
+    variant="cream"
+  />
+
+  <CTA
+    kicker="Parlons-en"
+    heading="Faisons connaissance autour de votre projet"
+    description="Que vous imaginiez une cheminée sur mesure ou que vous hésitiez encore, le premier conseil est gratuit et sans engagement."
+  />
+</BaseLayout>

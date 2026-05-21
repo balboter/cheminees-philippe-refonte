@@ -31,7 +31,7 @@ pnpm-debug.log*
 .claude/
 
 # Documents internes — NE JAMAIS publier sur le repo public
-# (brief, positionnement, stratégie, spec de build, rapports d'audit)
+# (brief, positionnement, stratégie, spec de build, rapports d'audit, doc de livraison)
 brief-creatif.md
 dossier-positionnement.md
 strategie-wireframe.md
@@ -39,3 +39,7 @@ BUILD-SPEC.md
 audit-2026-05-21.md
 audit-seo.md
 audit-gdpr.md
+HANDOFF.md
+REFONTE-SPEC.md
+BUILD-NOTES.md
+docs/

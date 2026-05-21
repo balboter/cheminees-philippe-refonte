@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroEditorial from "../components/HeroEditorial.astro";
+import CTA from "../components/CTA.astro";
+import { url } from "../lib/url";
+
+type Categorie = "cheminee" | "foyer-insert";
+
+interface Realisation {
+  src: string;
+  cat: Categorie;
+  legende: string;
+  lieu: string;
+}
+
+const realisationsRaw: Realisation[] = [
+  { src: "/images/installations/167.webp", cat: "cheminee", legende: "Cheminée en pierre de taille", lieu: "Bernay" },
+  { src: "/images/installations/166.webp", cat: "cheminee", legende: "Habillage de marbre clair", lieu: "Vernon" },
+  { src: "/images/installations/178.webp", cat: "cheminee", legende: "Cheminée d'angle sur mesure", lieu: "Louviers" },
+  { src: "/images/installations/196.webp", cat: "cheminee", legende: "Habillage de pierre maçonné", lieu: "Gisors" },
+  { src: "/images/installations/gallery14-56.webp", cat: "cheminee", legende: "Cheminée traditionnelle", lieu: "Conches-en-Ouche" },
+  { src: "/images/installations/gallery14-57.webp", cat: "cheminee", legende: "Cheminée de pierre et de bois", lieu: "Verneuil-sur-Avre" },
+  { src: "/images/installations/gallery14-59.webp", cat: "cheminee", legende: "Cheminée de salon sur mesure", lieu: "Gaillon" },
+  { src: "/images/installations/131.webp", cat: "cheminee", legende: "Cheminée habillage minéral", lieu: "Pont-Audemer" },
+  { src: "/images/installations/183.webp", cat: "foyer-insert", legende: "Foyer fermé pour pièce ouverte", lieu: "Louviers" },
+  { src: "/images/installations/137.webp", cat: "foyer-insert", legende: "Foyer fermé à grande vitre", lieu: "Évreux" },
+  { src: "/images/installations/148.webp", cat: "foyer-insert", legende: "Insert habillé sur mesure", lieu: "Pacy-sur-Eure" },
+  { src: "/images/installations/128.webp", cat: "foyer-insert", legende: "Insert posé en cheminée existante", lieu: "Bernay" },
+  { src: "/images/installations/gallery14-61.webp", cat: "foyer-insert", legende: "Cheminée rénovée par un insert", lieu: "Étrépagny" },
+  { src: "/images/installations/gallery14-62.webp", cat: "foyer-insert", legende: "Foyer fermé en rénovation", lieu: "Beuzeville" },
+  { src: "/images/installations/gallery14-63.webp", cat: "foyer-insert", legende: "Insert à large vision", lieu: "Damville" },
+  { src: "/images/installations/125.webp", cat: "foyer-insert", legende: "Insert de salon contemporain", lieu: "Verneuil-sur-Avre" },
+  { src: "/images/installations/149.webp", cat: "foyer-insert", legende: "Foyer fermé en pavillon", lieu: "Le Neubourg" },
+  { src: "/images/installations/gallery78-108.webp", cat: "foyer-insert", legende: "Insert posé en cheminée ancienne", lieu: "Breteuil" },
+];
+
+const realisations = realisationsRaw.map((r) => ({ ...r, src: url(r.src) }));
+const total = realisations.length;
+const compte = {
+  cheminee: realisations.filter((r) => r.cat === "cheminee").length,
+  "foyer-insert": realisations.filter((r) => r.cat === "foyer-insert").length,
+};
+---
+
+<BaseLayout
+  title="Nos réalisations — cheminées sur mesure posées dans l'Eure"
+  description="Cheminées sur mesure, foyers fermés et inserts installés par nos équipes dans l'Eure et en Normandie. Parcourez nos réalisations réelles."
+>
+  <HeroEditorial
+    kicker="Réalisations"
+    title="Chacune a trouvé sa pièce"
+    intro="Toutes les installations présentées ici sont réelles, chez des particuliers de l'Eure et de Normandie. Aucune ne ressemble exactement à une autre."
+    image="/images/installations/167.webp"
+    imageAlt="Cheminée sur mesure en pierre installée dans un séjour"
+    showPhone={false}
+    height="short"
+  />
+
+  <section class="bg-white py-16 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div
+        class="flex flex-wrap gap-3"
+        role="group"
+        aria-label="Filtrer les réalisations"
+      >
+        <button
+          type="button"
+          data-filter="all"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-brand-500 text-white text-sm font-medium tracking-wide transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          aria-pressed="true"
+        >
+          Tout voir ({total})
+        </button>
+        <button
+          type="button"
+          data-filter="cheminee"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          aria-pressed="false"
+        >
+          Cheminées ({compte.cheminee})
+        </button>
+        <button
+          type="button"
+          data-filter="foyer-insert"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          aria-pressed="false"
+        >
+          Foyers & inserts ({compte["foyer-insert"]})
+        </button>
+      </div>
+
+      <div
+        id="gallery-grid"
+        class="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+      >
+        {realisations.map((r, i) => (
+          <figure class="gallery-item group" data-cat={r.cat}>
+            <div class="overflow-hidden">
+              <img
+                src={r.src}
+                alt={`${r.legende} — installation Cheminées Philippe à ${r.lieu}`}
+                width="800"
+                height="600"
+                loading={i < 6 ? "eager" : "lazy"}
+                class="w-full aspect-[3/2] object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+              />
+            </div>
+            <figcaption class="mt-4">
+              <p class="font-display text-lg text-ink-900">{r.legende}</p>
+              <p class="mt-0.5 text-sm uppercase tracking-[0.14em] text-ink-500">
+                {r.lieu}
+              </p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <p id="gallery-empty" class="hidden mt-12 text-center text-lg text-ink-500">
+        Aucune réalisation dans cette catégorie pour le moment.
+      </p>
+    </div>
+  </section>
+
+  <CTA
+    kicker="Parlons-en"
+    heading="La prochaine pourrait être la vôtre"
+    description="Nous étudions votre pièce, votre conduit et vos envies, puis nous vous proposons un projet chiffré, sans engagement."
+  />
+</BaseLayout>
+
+<script>
+  const items = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const emptyMsg = document.getElementById("gallery-empty");
+  let currentFilter = "all";
+
+  function applyFilter() {
+    let visible = 0;
+    items.forEach((item) => {
+      const matched = currentFilter === "all" || item.dataset.cat === currentFilter;
+      item.style.display = matched ? "" : "none";
+      if (matched) visible++;
+    });
+    emptyMsg?.classList.toggle("hidden", visible > 0);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentFilter = btn.dataset.filter ?? "all";
+      buttons.forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("bg-brand-500", "text-white");
+        b.classList.add("bg-white", "text-ink-700", "border", "border-warm-200");
+      });
+      btn.setAttribute("aria-pressed", "true");
+      btn.classList.remove("bg-white", "text-ink-700", "border", "border-warm-200");
+      btn.classList.add("bg-brand-500", "text-white");
+      applyFilter();
+    });
+  });
+
+  applyFilter();
+</script>

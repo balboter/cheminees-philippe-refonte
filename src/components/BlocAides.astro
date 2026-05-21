@@ -1,0 +1,65 @@
+---
+interface Props {
+  kicker?: string;
+  title?: string;
+  variant?: "cream" | "white";
+}
+
+const {
+  kicker = "Aides à la rénovation",
+  title = "Foyers fermés et inserts : des appareils éligibles aux aides",
+  variant = "cream",
+} = Astro.props;
+
+const bg = variant === "white" ? "bg-white" : "bg-[#f4efe7]";
+
+const points = [
+  {
+    titre: "MaPrimeRénov'",
+    texte:
+      "Remplacer un foyer ouvert par un foyer fermé ou un insert performant ouvre droit à MaPrimeRénov', selon vos revenus et votre logement.",
+  },
+  {
+    titre: "Certificats d'économies d'énergie",
+    texte:
+      "Les CEE se cumulent avec MaPrimeRénov'. Ensemble, ces deux dispositifs allègent sensiblement le coût d'un projet de rénovation.",
+  },
+  {
+    titre: "La certification qui ouvre les droits",
+    texte:
+      "Ces aides sont conditionnées à une pose par un installateur qualifié. C'est l'une des raisons d'être d'un concessionnaire installateur comme le nôtre.",
+  },
+];
+---
+
+<section class={`${bg} py-20 sm:py-28 lg:py-36`}>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="rounded-2xl border border-brand-200 bg-white p-8 sm:p-12 lg:p-14">
+      <p class="text-xs sm:text-sm uppercase tracking-[0.28em] text-brand-600">
+        {kicker}
+      </p>
+      <h2
+        class="mt-5 font-display font-semibold text-ink-900 leading-[1.15] text-2xl sm:text-3xl lg:text-4xl"
+      >
+        {title}
+      </h2>
+
+      <dl class="mt-8 sm:mt-10 space-y-7 sm:space-y-8">
+        {points.map((p) => (
+          <div class="border-l-2 border-brand-200 pl-5 sm:pl-6">
+            <dt class="font-display text-lg sm:text-xl text-ink-900">
+              {p.titre}
+            </dt>
+            <dd class="mt-2 text-ink-600 leading-relaxed">{p.texte}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <p class="mt-8 text-sm text-ink-500 leading-relaxed">
+        Les montants dépendent de votre situation et évoluent chaque année. Nous
+        faisons le point avec vous lors de la visite technique, et nous vous
+        accompagnons dans le montage du dossier.
+      </p>
+    </div>
+  </div>
+</section>
