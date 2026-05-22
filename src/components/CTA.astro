@@ -8,6 +8,7 @@ interface Props {
   ctaLabel?: string;
   ctaHref?: string;
   reassurance?: string;
+  image?: string;
 }
 
 const {
@@ -17,12 +18,13 @@ const {
   ctaLabel = "Demander un devis gratuit",
   ctaHref = "/contact",
   reassurance = "Visite-conseil et devis gratuits, sans engagement.",
+  image = "/images/installations/137.webp",
 } = Astro.props;
 ---
 
 <section class="relative isolate overflow-hidden">
   <img
-    src={url("/images/installations/137.webp")}
+    src={url(image)}
     alt=""
     width="1920"
     height="1080"
