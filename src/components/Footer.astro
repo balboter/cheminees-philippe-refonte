@@ -22,7 +22,7 @@ const navMaison = [
         <p class="font-display text-2xl font-semibold text-ink-900">
           Cheminées Philippe
         </p>
-        <p class="mt-1 text-xs uppercase tracking-[0.22em] text-brand-700">
+        <p class="mt-1 text-xs uppercase tracking-[0.22em] text-brand-500">
           Évreux · concessionnaire depuis 1986
         </p>
         <p class="mt-6 text-ink-600 leading-relaxed max-w-sm">
@@ -39,7 +39,7 @@ const navMaison = [
         <ul class="mt-5 space-y-3">
           {navProduits.map((l) => (
             <li>
-              <a href={url(l.href)} class="text-ink-700 hover:text-brand-700 transition">
+              <a href={url(l.href)} class="text-ink-700 hover:text-brand-600 transition">
                 {l.label}
               </a>
             </li>
@@ -48,7 +48,7 @@ const navMaison = [
         <ul class="mt-5 space-y-3">
           {navMaison.map((l) => (
             <li>
-              <a href={url(l.href)} class="text-ink-700 hover:text-brand-700 transition">
+              <a href={url(l.href)} class="text-ink-700 hover:text-brand-600 transition">
                 {l.label}
               </a>
             </li>
@@ -67,7 +67,7 @@ const navMaison = [
         <p class="mt-4">
           <a
             href="tel:+33232333193"
-            class="font-display text-2xl font-semibold text-ink-900 hover:text-brand-700 transition"
+            class="font-display text-2xl font-semibold text-ink-900 hover:text-brand-600 transition"
           >
             02 32 33 31 93
           </a>
@@ -75,7 +75,7 @@ const navMaison = [
         <p class="mt-2">
           <a
             href="mailto:cheminexpo@wanadoo.fr"
-            class="text-ink-700 hover:text-brand-700 transition"
+            class="text-ink-700 hover:text-brand-600 transition"
           >
             cheminexpo@wanadoo.fr
           </a>
@@ -93,12 +93,12 @@ const navMaison = [
       </p>
       <ul class="flex gap-6 text-sm">
         <li>
-          <a href={url("/mentions-legales")} class="text-ink-500 hover:text-brand-700 transition">
+          <a href={url("/mentions-legales")} class="text-ink-500 hover:text-brand-600 transition">
             Mentions légales
           </a>
         </li>
         <li>
-          <a href={url("/politique-de-confidentialite")} class="text-ink-500 hover:text-brand-700 transition">
+          <a href={url("/politique-de-confidentialite")} class="text-ink-500 hover:text-brand-600 transition">
             Confidentialité
           </a>
         </li>

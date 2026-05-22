@@ -68,7 +68,7 @@ const compte = {
         <button
           type="button"
           data-filter="all"
-          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-brand-600 text-white text-sm font-medium tracking-wide transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-brand-500 text-white text-sm font-medium tracking-wide transition focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:outline-none"
           aria-pressed="true"
         >
           Tout voir ({total})
@@ -76,7 +76,7 @@ const compte = {
         <button
           type="button"
           data-filter="cheminee"
-          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:outline-none"
           aria-pressed="false"
         >
           Cheminées ({compte.cheminee})
@@ -84,7 +84,7 @@ const compte = {
         <button
           type="button"
           data-filter="foyer-insert"
-          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:outline-none"
+          class="filter-btn px-5 py-3 min-h-[44px] rounded-full bg-white text-ink-700 text-sm font-medium tracking-wide border border-warm-200 hover:border-brand-300 transition focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:outline-none"
           aria-pressed="false"
         >
           Foyers & inserts ({compte["foyer-insert"]})
@@ -151,12 +151,12 @@ const compte = {
       currentFilter = btn.dataset.filter ?? "all";
       buttons.forEach((b) => {
         b.setAttribute("aria-pressed", "false");
-        b.classList.remove("bg-brand-600", "text-white");
+        b.classList.remove("bg-brand-500", "text-white");
         b.classList.add("bg-white", "text-ink-700", "border", "border-warm-200");
       });
       btn.setAttribute("aria-pressed", "true");
       btn.classList.remove("bg-white", "text-ink-700", "border", "border-warm-200");
-      btn.classList.add("bg-brand-600", "text-white");
+      btn.classList.add("bg-brand-500", "text-white");
       applyFilter();
     });
   });

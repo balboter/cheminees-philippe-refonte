@@ -8,9 +8,9 @@
   --color-brand-200: #fbc4c5;
   --color-brand-300: #f79a9c;
   --color-brand-400: #f15457;
-  --color-brand-500: #ef181c; /* le rouge de marque — accents, icônes, kickers */
-  --color-brand-600: #cf1014; /* fonds de bouton CTA (texte blanc, WCAG AA) */
-  --color-brand-700: #aa0e12; /* texte rouge sur blanc (contraste AA) */
+  --color-brand-500: #ef181c; /* rouge de marque vif — boutons, texte, accents, icônes */
+  --color-brand-600: #cf1014; /* survol des boutons et liens (un cran plus foncé) */
+  --color-brand-700: #aa0e12; /* teinte foncée — réserve, non utilisée en standard */
   --color-brand-800: #870d10;
   --color-brand-900: #5f0d0f;
   --color-brand-950: #350608;
@@ -65,7 +65,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-600);
+    outline: 2px solid var(--color-brand-500);
     outline-offset: 2px;
     border-radius: 2px;
   }
