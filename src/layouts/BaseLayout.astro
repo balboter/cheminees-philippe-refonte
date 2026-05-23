@@ -17,6 +17,7 @@ interface Props {
   canonicalURL?: string;
   schema?: object;
   noindex?: boolean;
+  solidHeader?: boolean;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
   image = "/og-default.jpg",
   schema,
   noindex = false,
+  solidHeader = false,
 } = Astro.props;
 
 const siteName = "Cheminées Philippe Évreux";
@@ -136,7 +138,7 @@ const defaultSchema = {
     >
       Aller au contenu principal
     </a>
-    <Header />
+    <Header solid={solidHeader} />
     <main id="main" class="flex-1">
       <slot />
     </main>

@@ -1,6 +1,12 @@
 ---
 import { url } from "../lib/url";
 
+interface Props {
+  solid?: boolean;
+}
+
+const { solid = false } = Astro.props;
+
 const navLinks = [
   { href: "/cheminees-sur-mesure", label: "Cheminées sur mesure" },
   { href: "/foyers-inserts", label: "Foyers & inserts" },
@@ -14,7 +20,8 @@ const navLinks = [
 <header
   id="site-header"
   class="fixed top-0 inset-x-0 z-40 transition-colors duration-500"
-  data-state="top"
+  data-state={solid ? "scrolled" : "top"}
+  data-solid={solid ? "true" : "false"}
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-3 py-4 lg:py-5">
@@ -176,6 +183,10 @@ const navLinks = [
 
     function syncState() {
       if (!header) return;
+      if (header.dataset.solid === "true") {
+        header.dataset.state = "scrolled";
+        return;
+      }
       const menuOpen = menu && !menu.classList.contains("hidden");
       header.dataset.state = window.scrollY > 40 || menuOpen ? "scrolled" : "top";
     }
